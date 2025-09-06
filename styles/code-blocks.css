@@ -1,0 +1,177 @@
+/* Enhanced code block styling */
+.code-highlight {
+    position: relative;
+    background: transparent;
+    font-family: "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+  
+  /* Add a subtle background pattern */
+  .code-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Style the pre element */
+  .code-highlight pre {
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Style the code element */
+  .code-highlight code {
+    display: grid;
+    counter-reset: line;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    tab-size: 2;
+  }
+  
+  /* Line numbers */
+  .code-highlight code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1.5rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: rgba(115, 115, 115, 0.4);
+  }
+  
+  /* Highlighted lines */
+  .code-highlight [data-highlighted-line] {
+    background-color: rgba(200, 200, 255, 0.1);
+    border-left: 2px solid #8b5cf6;
+  }
+  
+  /* Focus mode - dim non-highlighted lines */
+  .code-highlight.focus-mode [data-line]:not([data-highlighted-line]) {
+    opacity: 0.5;
+    transition: opacity 0.1s ease;
+  }
+  
+  /* Highlighted chars */
+  .code-highlight [data-highlighted-chars] {
+    background-color: rgba(139, 92, 246, 0.2);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.2);
+  }
+  
+  /* Inline code styling */
+  :not(pre) > code {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+    font-weight: 500;
+    font-family: "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+  
+  /* Scrollbar styling */
+  .code-highlight pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .code-highlight pre::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+  }
+  
+  .code-highlight pre::-webkit-scrollbar-thumb {
+    background-color: rgba(139, 92, 246, 0.3);
+    border-radius: 4px;
+  }
+  
+  .code-highlight pre::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(139, 92, 246, 0.5);
+  }
+  
+  /* Dark mode adjustments */
+  .dark .code-highlight::before {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+  
+  /* Animation for copy button success */
+  @keyframes success-pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .copy-success {
+    animation: success-pulse 0.3s ease-in-out;
+  }
+  
+  /* Animated gradient border */
+  @keyframes border-glow {
+    0% {
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+    }
+    25% {
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+    }
+    50% {
+      border-color: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+    }
+    75% {
+      border-color: rgba(45, 239, 126, 0.3);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.1);
+    }
+    100% {
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+    }
+  }
+  
+  /* Apply the animation to code blocks on hover */
+  .group:hover {
+    animation: border-glow 8s infinite;
+  }
+  
+  /* Add a subtle glow effect */
+  .group:hover::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    background: linear-gradient(
+      45deg,
+      rgba(139, 92, 246, 0.2),
+      rgba(59, 130, 246, 0.2),
+      rgba(16, 185, 129, 0.2),
+      rgba(29, 252, 78, 0.2)
+    );
+    filter: blur(10px);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .group:hover::after {
+    opacity: 1;
+  }
+  
+  

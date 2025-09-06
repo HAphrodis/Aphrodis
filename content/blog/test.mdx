@@ -1,0 +1,147 @@
+---
+title: "Testing Your Custom MDX Styles: A Developer's Playground"
+description: "A rich blog post to help you visually test every custom MDX style you’ve configured, from headers to tables, code blocks, images, and more."
+date: "2025-04-05"
+author: "Ishimwe Jean Baptiste"
+tags: ["mdx", "nextjs", "blogging", "design", "testing"]
+image: "/images/blog/cover.jpg"
+---
+
+> “Design is not just what it looks like and feels like. Design is how it works.” – Steve Jobs
+
+Welcome to the **ultimate MDX style test**. This post is packed with all the MDX elements you need to preview and polish your custom components and styles.
+
+## Table of Contents
+
+1. [Headings](#headings)
+2. [Blockquotes](#blockquotes)
+3. [Code Blocks](#code-blocks)
+4. [Lists](#lists)
+5. [Tables](#tables)
+6. [Images](#images)
+7. [Inline Code and Emphasis](#inline-code-and-emphasis)
+8. [Links](#links)
+9. [Admonitions](#admonitions)
+10. [Conclusion](#conclusion)
+
+---
+
+## Headings
+
+### H3 Heading
+
+#### H4 Heading
+
+##### H5 Heading
+
+## Blockquotes
+
+> This is a simple blockquote. It should be styled clearly and distinctively.
+>
+> Multiple lines of blockquote should wrap nicely and preserve spacing.
+
+## Code Blocks
+
+### Basic TypeScript Example
+
+```ts showLineNumbers title="HelloWorld.ts"
+// A basic hello world example
+const greet = (name: string): string => {
+  return `Hello, ${name}!`;
+};
+```
+
+### Highlighted Lines Example
+
+```js showLineNumbers {2,5} title="highlighted-example.js"
+function sum(a, b) {
+  return a + b;
+}
+
+console.log(sum(2, 3)); // Expected output: 5
+```
+
+## Lists
+
+### Unordered List
+
+- First item
+- Second item
+  - Nested subitem
+- Third item
+
+### Ordered List
+
+1. Install dependencies
+2. Set up your project
+   1. Configure MDX
+   2. Test components
+3. Deploy
+
+## Tables
+
+| Feature     | Status | Notes                       |
+| ----------- | ------ | --------------------------- |
+| Headings    | ✅     | H1–H5 supported             |
+| Blockquotes | ✅     | Styled and wrapped          |
+| Code Blocks | ✅     | Syntax highlighting, titles |
+| Lists       | ✅     | Ordered and unordered       |
+| Tables      | ✅     | Responsive?                 |
+| Admonitions | ✅     | Custom MDX component ready  |
+
+## Images
+
+### Local Image
+
+![MDX Custom Style Test](/images/blog/cover.jpg)
+
+### External Image
+
+![React Logo](https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg)
+
+## Inline Code and Emphasis
+
+Use `npm run dev` to start the server.  
+You can also import `@mdx-js/react` to use custom components.  
+Here’s some **bold text**, _italic text_, and **_bold italic text_**.
+
+## Links
+
+- [MDX Documentation](https://mdxjs.com/)
+- [Next.js](https://nextjs.org/)
+- [Your GitHub Repo](https://github.com/yourusername)
+
+## Admonitions
+
+:::tip
+This is a tip box. Great for highlighting helpful info.
+:::
+
+:::info
+This is an info box. Use it for general context.
+:::
+
+:::warning
+This is a warning box. Something might go wrong here!
+:::
+
+:::danger
+Danger! Proceed with caution.
+:::
+
+## Conclusion
+
+You’ve now seen a fully-loaded MDX blog post designed to test your custom styles. Be sure to:
+
+- Check spacing
+- Review heading hierarchy
+- Test mobile responsiveness
+- Style interactive components
+
+Happy theming! 🎨
+
+---
+
+_Last updated: April 5, 2025_
+
+If you see anything missing or broken, please [report an issue](https://github.com/yourusername/blog/issues).

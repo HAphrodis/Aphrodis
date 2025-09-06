@@ -1,0 +1,16 @@
+.giscus-frame {
+    background-color: transparent !important;
+    margin: 0;
+  }
+  
+  .giscus {
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Ensure dark theme compatibility */
+  .giscus-frame iframe {
+    background-color: transparent !important;
+  }
+  
+  

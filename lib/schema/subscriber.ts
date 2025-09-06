@@ -1,0 +1,11 @@
+import { z } from "zod";
+
+export const subscriberSchema = z.object({
+  email: z
+    .string()
+    .min(1, { message: "Email is required" })
+    .email({ message: "Invalid email address" }),
+  names: z.string().optional(),
+});
+
+export type SubscriberFormData = z.infer<typeof subscriberSchema>;

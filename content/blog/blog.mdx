@@ -1,0 +1,744 @@
+---
+title: "Modern React Patterns for Cleaner and More Maintainable Code"
+description: "Explore advanced React patterns that will help you write more maintainable, scalable, and testable React applications."
+image: "/images/blog/dentw.jpg"
+date: "2024-05-30"
+author: "devbertskie"
+tags: ["react", "javascript", "typescript", "frontend"]
+---
+
+# Modern React Patterns for Cleaner and More Maintainable Code
+
+React has evolved significantly since its initial release, and with it, patterns and best practices have emerged to help developers write cleaner, more maintainable code. In this post, we'll explore some modern React patterns that can help you level up your React applications.
+
+## Compound Components
+
+Compound components are a pattern where components are used together such that they share an implicit state that lets them communicate with each other. This pattern provides a more declarative and flexible API.
+
+```tsx filename="components/select/select.tsx"
+import React, { createContext, useContext, useState } from "react";
+
+// Create a context with a default value
+const SelectContext = createContext<{
+  selectedItem: string | null;
+  setSelectedItem: (item: string) => void;
+}>({
+  selectedItem: null,
+  setSelectedItem: () => {},
+});
+
+// Main component that manages state
+export function Select({
+  children,
+  defaultValue = null,
+}: {
+  children: React.ReactNode;
+  defaultValue?: string | null;
+}) {
+  const [selectedItem, setSelectedItem] = useState<string | null>(defaultValue);
+
+  return (
+    <SelectContext.Provider value={{ selectedItem, setSelectedItem }}>
+      <div className="select-container">{children}</div>
+    </SelectContext.Provider>
+  );
+}
+
+// Sub-components that use the context
+
+Select.Trigger = function SelectTrigger({ className }: { className?: string }) {
+  const { selectedItem } = useContext(SelectContext);
+
+  return (
+    <button className={`select-trigger ${className || ""}`}>
+      {selectedItem || "Select an option"}
+    </button>
+  );
+};
+
+Select.Options = function SelectOptions({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <div className="select-options">{children}</div>;
+};
+
+Select.Option = function SelectOption({
+  value,
+  children,
+}: {
+  value: string;
+  children: React.ReactNode;
+}) {
+  const { selectedItem, setSelectedItem } = useContext(SelectContext);
+
+  return (
+    <div
+      className={`select-option ${selectedItem === value ? "selected" : ""}`}
+      onClick={() => setSelectedItem(value)}
+    >
+      {children}
+    </div>
+  );
+};
+```
+
+This pattern allows for a more declarative API when using the component:
+
+```typescriptreact
+import { Select } from '@/components/select/select';
+
+export default function Page() {
+  return (
+    <Select defaultValue="apple">
+      <Select.Trigger className="w-full" />
+      <Select.Options>
+        <Select.Option value="apple">Apple</Select.Option>
+        <Select.Option value="banana">Banana</Select.Option>
+        <Select.Option value="orange">Orange</Select.Option>
+      </Select.Options>
+    </Select>
+  );
+}
+```
+
+## Render Props
+
+The render props pattern involves passing a function as a prop to a component, which the component then calls to render something. This pattern provides a way to share code between components.
+
+```typescript
+import { useState, useEffect } from 'react';
+
+interface MousePosition {
+  x: number;
+  y: number;
+}
+
+interface MouseTrackerProps {
+  render: (position: MousePosition) => React.ReactNode;
+}
+
+export function MouseTracker({ render }: MouseTrackerProps) {
+  const [position, setPosition] = useState<MousePosition>({ x: 0, y: 0 });
+
+  useEffect(() => {
+    function handleMouseMove(event: MouseEvent) {
+      setPosition({ x: event.clientX, y: event.clientY });
+    }
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  return <>{render(position)}</>;
+}
+```
+
+Usage example:
+
+```typescriptreact
+import { MouseTracker } from '@/components/mouse-position';
+
+export default function MouseDemo() {
+  return (
+    <div className="h-screen w-full bg-gray-100">
+      <MouseTracker
+        render={({ x, y }) => (
+          <div className="fixed top-4 right-4 bg-white p-4 rounded-md shadow-md">
+            <p>Mouse position:</p>
+            <p>X: {x}</p>
+            <p>Y: {y}</p>
+          </div>
+        )}
+      />
+    </div>
+  );
+}
+```
+
+## Custom Hooks
+
+Custom hooks allow you to extract component logic into reusable functions. This is one of the most powerful patterns in React.
+
+```typescript
+import { useState, useEffect } from "react";
+
+export function useLocalStorage<T>(
+  key: string,
+  initialValue: T,
+): [T, (value: T) => void] {
+  // Get from local storage then parse stored json or return initialValue
+  const readValue = (): T => {
+    if (typeof window === "undefined") {
+      return initialValue;
+    }
+
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? (JSON.parse(item) as T) : initialValue;
+    } catch (error) {
+      console.warn(`Error reading localStorage key "${key}":`, error);
+      return initialValue;
+    }
+  };
+
+  // State to store our value
+  const [storedValue, setStoredValue] = useState<T>(readValue);
+
+  // Return a wrapped version of useState's setter function that persists the new value to localStorage
+  const setValue = (value: T) => {
+    try {
+      // Allow value to be a function so we have the same API as useState
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
+
+      // Save state
+      setStoredValue(valueToStore);
+
+      // Save to local storage
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      }
+    } catch (error) {
+      console.warn(`Error setting localStorage key "${key}":`, error);
+    }
+  };
+
+  useEffect(() => {
+    setStoredValue(readValue());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setStoredValue(readValue());
+    };
+
+    // Listen for changes to this local storage key
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return [storedValue, setValue];
+}
+```
+
+Usage example:
+
+```typescriptreact
+import { useLocalStorage } from '@/hooks/use-local-storage';
+
+export function ThemeSwitcher() {
+  const [theme, setTheme] = useLocalStorage<'light' | 'dark'>('theme', 'light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className="px-4 py-2 rounded-md bg-primary text-white"
+    >
+      Current theme: {theme}
+    </button>
+  );
+}
+```
+
+## Context + Reducers
+
+Combining React Context with useReducer is a powerful pattern for managing complex state logic in your application.
+
+```typescriptreact
+import React, { createContext, useContext, useReducer } from 'react';
+
+// Define types
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+}
+
+interface CartItem extends Product {
+  quantity: number;
+}
+
+interface CartState {
+  items: CartItem[];
+  total: number;
+}
+
+type CartAction =
+  | { type: 'ADD_ITEM'; payload: Product }
+  | { type: 'REMOVE_ITEM'; payload: { id: string } }
+  | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
+  | { type: 'CLEAR_CART' };
+
+// Create initial state
+const initialState: CartState = {
+  items: [],
+  total: 0,
+};
+
+// Create reducer function
+function cartReducer(state: CartState, action: CartAction): CartState {
+  switch (action.type) {
+    case 'ADD_ITEM': {
+      const existingItemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingItemIndex >= 0) {
+        // Item exists, update quantity
+        const updatedItems = [...state.items];
+        updatedItems[existingItemIndex] = {
+          ...updatedItems[existingItemIndex],
+          quantity: updatedItems[existingItemIndex].quantity + 1,
+        };
+
+        return {
+          ...state,
+          items: updatedItems,
+          total: state.total + action.payload.price,
+        };
+      } else {
+        // Add new item
+        return {
+          ...state,
+          items: [...state.items, { ...action.payload, quantity: 1 }],
+          total: state.total + action.payload.price,
+        };
+      }
+    }
+    case 'REMOVE_ITEM': {
+      const existingItem = state.items.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (!existingItem) return state;
+
+      const updatedItems = state.items.filter(
+        (item) => item.id !== action.payload.id
+      );
+
+      return {
+        ...state,
+        items: updatedItems,
+        total: state.total - existingItem.price * existingItem.quantity,
+      };
+    }
+    case 'UPDATE_QUANTITY': {
+      const existingItemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingItemIndex === -1) return state;
+
+      const existingItem = state.items[existingItemIndex];
+      const quantityDiff = action.payload.quantity - existingItem.quantity;
+
+      const updatedItems = [...state.items];
+      updatedItems[existingItemIndex] = {
+        ...existingItem,
+        quantity: action.payload.quantity,
+      };
+
+      return {
+        ...state,
+        items: updatedItems,
+        total: state.total + existingItem.price * quantityDiff,
+      };
+    }
+    case 'CLEAR_CART':
+      return initialState;
+    default:
+      return state;
+  }
+}
+
+// Create context
+const CartContext = createContext<{
+  state: CartState;
+  dispatch: React.Dispatch<CartAction>;
+}>({
+  state: initialState,
+  dispatch: () => null,
+});
+
+// Create provider component
+export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  return (
+    <CartContext.Provider value={{ state, dispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
+}
+
+// Create custom hook for using the cart context
+export function useCart() {
+  const context = useContext(CartContext);
+
+  if (context === undefined) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+
+  return context;
+}
+```
+
+Usage example:
+
+```typescriptreact
+import { useCart } from '@/contexts/cart-context';
+
+interface ProductCardProps {
+  product: {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+  };
+}
+
+export function ProductCard({ product }: ProductCardProps) {
+  const { dispatch } = useCart();
+
+  const addToCart = () => {
+    dispatch({ type: 'ADD_ITEM', payload: product });
+  };
+
+  return (
+    <div className="border rounded-lg overflow-hidden">
+      <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-48 object-cover" />
+      <div className="p-4">
+        <h3 className="text-lg font-semibold">{product.name}</h3>
+        <p className="text-gray-600">${product.price.toFixed(2)}</p>
+        <button
+          onClick={addToCart}
+          className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Performance Optimization
+
+React provides several ways to optimize performance. Here are some examples:
+
+### React.memo
+
+```typescriptreact
+import { memo } from 'react';
+
+interface ExpensiveComponentProps {
+  data: {
+    id: string;
+    title: string;
+  };
+  onClick: (id: string) => void;
+}
+
+function ExpensiveComponent({ data, onClick }: ExpensiveComponentProps) {
+  console.log('Rendering ExpensiveComponent');
+
+  // Simulate expensive calculation
+  const expensiveCalculation = () => {
+    let result = 0;
+    for (let i = 0; i &lt; 1000000; i++) {
+      result += i;
+    }
+    return result;
+  };
+
+  const result = expensiveCalculation();
+
+  return (
+    <div className="p-4 border rounded-md">
+      <h3>{data.title}</h3>
+      <p>Expensive calculation result: {result}</p>
+      <button
+        onClick={() => onClick(data.id)}
+        className="px-3 py-1 bg-blue-500 text-white rounded"
+      >
+        Click me
+      </button>
+    </div>
+  );
+}
+
+// Memoize the component to prevent unnecessary re-renders
+export default memo(ExpensiveComponent);
+```
+
+### useMemo and useCallback
+
+```typescriptreact
+import { useState, useMemo, useCallback } from 'react';
+import ExpensiveComponent from './expensive-component';
+
+interface Item {
+  id: string;
+  title: string;
+}
+
+export function OptimizedList() {
+  const [items, setItems] = useState<Item[]>([
+    { id: '1', title: 'Item 1' },
+    { id: '2', title: 'Item 2' },
+    { id: '3', title: 'Item 3' },
+  ]);
+
+  const [count, setCount] = useState(0);
+
+  // Memoize expensive data transformation
+  const processedItems = useMemo(() => {
+    console.log('Processing items');
+    return items.map(item => ({
+      ...item,
+      title: `${item.title} (Processed)`
+    }));
+  }, [items]);
+
+  // Memoize callback function
+  const handleItemClick = useCallback((id: string) => {
+    console.log(`Item clicked: ${id}`);
+    setItems(prevItems =>
+      prevItems.map(item =>
+        item.id === id
+          ? { ...item, title: `${item.title} (Clicked)` }
+          : item
+      )
+    );
+  }, []);
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <button
+          onClick={() => setCount(c => c + 1)}
+          className="px-4 py-2 bg-gray-200 rounded"
+        >
+          Count: {count}
+        </button>
+        <p className="text-sm text-gray-500">
+          This button updates state but shouldn't cause ExpensiveComponent to re-render
+        </p>
+      </div>
+
+      <div className="grid gap-4">
+        {processedItems.map(item => (
+          <ExpensiveComponent
+            key={item.id}
+            data={item}
+            onClick={handleItemClick}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+## CSS-in-JS with Styled Components
+
+Here's an example of using styled-components for styling:
+
+```typescriptreact
+import styled from 'styled-components';
+
+interface ButtonProps {
+  primary?: boolean;
+  size?: 'small' | 'medium' | 'large';
+}
+
+const StyledButton = styled.button<ButtonProps>`
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* Size variations */
+  padding: ${props => {
+    switch (props.size) {
+      case 'small':
+        return '4px 8px';
+      case 'large':
+        return '12px 24px';
+      default:
+        return '8px 16px';
+    }
+  }};
+
+  font-size: ${props => {
+    switch (props.size) {
+      case 'small':
+        return '0.875rem';
+      case 'large':
+        return '1.125rem';
+      default:
+        return '1rem';
+    }
+  }};
+
+  /* Primary/secondary variations */
+  background-color: ${props => props.primary ? '#3b82f6' : 'transparent'};
+  color: ${props => props.primary ? 'white' : '#3b82f6'};
+  border: ${props => props.primary ? 'none' : '1px solid #3b82f6'};
+
+  &:hover {
+    background-color: ${props => props.primary ? '#2563eb' : 'rgba(59, 130, 246, 0.1)'};
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+export function Button({
+  children,
+  primary = false,
+  size = 'medium',
+  ...props
+}: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <StyledButton primary={primary} size={size} {...props}>
+      {children}
+    </StyledButton>
+  );
+}
+```
+
+## Conclusion
+
+These modern React patterns can help you write more maintainable, scalable, and testable React applications. By leveraging these patterns, you can create components that are more reusable, composable, and easier to reason about.
+
+Remember that no pattern is a silver bullet, and the best approach depends on your specific use case. Don't be afraid to mix and match patterns to create the most elegant solution for your problem.
+
+Happy coding!
+
+```css
+/* This is a CSS example to test syntax highlighting */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+```
+
+```json
+{
+  "name": "react-patterns-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.52.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
+  }
+}
+```
+
+```shellscript
+#!/bin/bash
+
+# Install dependencies
+npm install
+
+# Install dev dependencies
+npm install -D @types/node @types/react @types/react-dom
+
+# Install additional packages
+npm install shiki
+
+# Setup tailwind
+npx tailwindcss init -p
+
+echo "All dependencies installed successfully!"
+```
+
+```plaintext
+
+This blog post includes:
+
+1. Various code blocks in different languages (TypeScript, React, CSS, JSON, Bash)
+2. Code blocks with filenames
+3. Long code blocks that will trigger the "Show More" functionality
+4. Inline code examples (like `useReducer` and `useMemo`)
+5. Headings, lists, and other MDX features
+
+You can save this as a `.mdx` file in your blog content directory and it should render with your new code syntax highlighting implementation. This will help you test all the features of your new code display component.
+```

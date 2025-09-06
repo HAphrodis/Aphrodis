@@ -1,0 +1,273 @@
+---
+title: "Deriving vs Decoupling: When NOT to be a TypeScript Wizard"
+description: "A deep dive into TypeScript type relationships, exploring when to derive types and when to keep them separate, with practical examples and real-world scenarios."
+date: "2024-05-30"
+author: "Ishimwe Jean Baptiste"
+tags: ["typescript", "software-architecture", "web-development"]
+image: "/images/blog/cover.jpg"
+---
+
+> "Make things as simple as possible, but not simpler." - Albert Einstein
+
+One of the most common pieces of advice for writing maintainable code is to "Keep code DRY" (Don't Repeat Yourself). While this principle applies well to JavaScript through functions and variables, its application to TypeScript types requires more nuance.
+
+```ts showLineNumbers {3-7} title="Basic Type Example"
+// A simple example of type relationships
+interface Album {
+  title: string;
+  artist: string;
+  releaseYear: number;
+  genre?: string;
+}
+```
+
+## Table of Contents
+
+1. [Understanding Derived Types](#understanding-derived-types)
+2. [The Art of Type Relationships](#the-art-of-type-relationships)
+3. [Real-World Examples](#real-world-examples)
+4. [Best Practices](#best-practices)
+
+## Understanding Derived Types
+
+A derived type inherits or depends on another type's structure. This relationship can take several forms:
+
+### Interface Extension
+
+```ts showLineNumbers {1-8,10-13} title="Interface Extension Example"
+interface Album {
+  title: string;
+  artist: string;
+  releaseYear: number;
+  genre?: string;
+  label?: string;
+  producer?: string;
+}
+
+interface ExtendedAlbum extends Album {
+  tracks: string[];
+  duration: number;
+  format: "CD" | "Vinyl" | "Digital";
+}
+```
+
+### Union Types
+
+```ts showLineNumbers title="Union Types Example"
+type Shape =
+  | { kind: "circle"; radius: number }
+  | { kind: "rectangle"; width: number; height: number }
+  | { kind: "triangle"; base: number; height: number };
+
+// Usage example
+const calculateArea = (shape: Shape): number => {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    case "rectangle":
+      return shape.width * shape.height;
+    case "triangle":
+      return (shape.base * shape.height) / 2;
+  }
+};
+```
+
+### The Art of Type Relationships
+
+When deciding between deriving and decoupling types, consider these factors:
+
+![TypeScript Type Relationships](/images/blog/cover.jpg)
+
+### ✅ Derive When:
+
+- Types share a fundamental relationship
+- Changes should cascade automatically
+- The relationship represents a clear hierarchy
+
+### ❌ Decouple When:
+
+1. Types serve different concerns
+2. Changes should be independent
+3. The relationship is coincidental
+
+Here's a practical example:
+
+```ts showLineNumbers title="Type Relationship Example"
+// Database type
+type User = {
+  id: string;
+  username: string;
+  email: string;
+  avatarUrl: string;
+  createdAt: Date;
+  preferences: UserPreferences;
+};
+
+// Bad: Derived component props
+type UserCardProps = Pick<User, "username" | "avatarUrl">;
+
+// Good: Decoupled component props
+type UserCardProps = {
+  username: string;
+  avatarUrl: string;
+};
+```
+
+## Real-World Examples
+
+Let's explore some common scenarios:
+
+### Example 1: API Response Types
+
+```ts showLineNumbers {1-6,8-12} title="API Types Example"
+type APIResponse<T> = {
+  data: T;
+  status: number;
+  message: string;
+  timestamp: string;
+};
+
+// Derived specific response type
+type UserAPIResponse = APIResponse<{
+  id: string;
+  name: string;
+  email: string;
+}>;
+```
+
+### Example 2: Form State Management
+
+```ts showLineNumbers title="Form State Example"
+type FormField<T> = {
+  value: T;
+  touched: boolean;
+  error?: string;
+  isDirty: boolean;
+};
+
+// Usage with different field types
+type LoginForm = {
+  username: FormField<string>;
+  password: FormField<string>;
+  rememberMe: FormField<boolean>;
+};
+```
+
+## Best Practices
+
+Here are some guidelines to follow:
+
+### 1. Keep It Simple
+
+```ts showLineNumbers title="Simplicity Example"
+// Too complex
+type ComponentProps<T extends keyof HTMLElementTagNameMap> = {
+  [K in keyof HTMLElementTagNameMap[T]]: HTMLElementTagNameMap[T][K];
+} & {
+  className?: string;
+  style?: React.CSSProperties;
+};
+
+// Better
+type ComponentProps = {
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+};
+```
+
+### 2. Consider Future Changes
+
+```ts showLineNumbers title="Future-Proof Example"
+// Flexible approach
+type Theme = {
+  colors: Record<string, string>;
+  spacing: Record<string, string | number>;
+  breakpoints: Record<string, number>;
+};
+
+// Instead of:
+type Theme = {
+  primaryColor: string;
+  secondaryColor: string;
+  spacing1: number;
+  spacing2: number;
+  // ... and so on
+};
+```
+
+### 3. Document Your Decisions
+
+```ts showLineNumbers title="Documentation Example"
+/**
+ * Represents user preferences that can be updated independently
+ * of the main user profile. Kept separate from UserProfile type
+ * to allow for partial updates and independent scaling.
+ */
+type UserPreferences = {
+  theme: "light" | "dark";
+  emailNotifications: boolean;
+  language: string;
+};
+```
+
+## Advanced Patterns
+
+Here's an example of a more advanced pattern using TypeScript's utility types:
+
+```ts showLineNumbers title="Advanced Pattern Example"
+type HttpMethods = "GET" | "POST" | "PUT" | "DELETE";
+
+type Endpoint<T> = {
+  method: HttpMethods;
+  path: string;
+  response: T;
+  params?: Record<string, string | number>;
+  body?: unknown;
+};
+
+type ApiSpec = {
+  "/users": Endpoint<User[]>;
+  "/users/:id": Endpoint<User>;
+  "/posts": Endpoint<Post[]>;
+  "/posts/:id": Endpoint<Post>;
+};
+
+// Type-safe API client
+const api = <T extends keyof ApiSpec>(
+  endpoint: T,
+  config: Omit<ApiSpec[T], "response">,
+): Promise<ApiSpec[T]["response"]> => {
+  // Implementation
+  return Promise.resolve({} as ApiSpec[T]["response"]);
+};
+```
+
+## Conclusion
+
+The decision to derive or decouple types should be based on:
+
+1. The natural relationship between types
+2. The likelihood of changes
+3. The maintenance burden
+4. The clarity of the code
+
+Remember: Just because you _can_ use advanced TypeScript features doesn't mean you _should_. Often, the simplest solution is the best one.
+
+---
+
+## Related Resources
+
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [TypeScript Design Patterns](https://refactoring.guru/design-patterns/typescript)
+- [Clean Code in TypeScript](https://github.com/labs42io/clean-code-typescript)
+
+## Join the Discussion
+
+Have thoughts on type relationships in TypeScript? Share your experiences in the comments below or reach out on [Twitter](https://twitter.com/yourusername).
+
+## Updates and Corrections
+
+Last updated: May 30, 2024
+
+If you spot any errors or have suggestions for improvements, please [open an issue](https://github.com/yourusername/blog/issues) on GitHub.

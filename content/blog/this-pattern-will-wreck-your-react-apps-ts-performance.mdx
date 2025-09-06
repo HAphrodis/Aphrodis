@@ -1,0 +1,178 @@
+---
+title: "This pattern will wreck your React App's TS Performance"
+description: "Imporve React Typescript performance by replacing type & with interface extends. Boost IDE and tsc speed significantly"
+image: "/images/blog/extends.webp"
+date: "2024-05-30"
+author: "devbertskie"
+---
+
+A couple of years ago, Sentry were having big problems with their React app. They'd pretty recently [migrated it to TypeScript](https://blog.sentry.io/slow-and-steady-converting-sentrys-entire-frontend-to-typescript) from JavaScript. And the app was part of a large monorepo.
+
+But the IDE performance was slow. You'd often need to wait a couple of seconds after making a change for the TypeScript language server to update. And running `tsc` would take a long time.
+
+Now, this isn't unusual for a large TypeScript codebase. But the Sentry team had a hunch that something was wrong. The problem felt out of proportion to the size of the codebase.
+
+It turned out that the issue, outlined by [Jonas](https://twitter.com/JonasBadalic/status/1765006152150974919), was down to a single pattern.
+
+## How To Tank Your React App's TS Performance
+
+In tons of places in Sentry's codebase, they were extending HTML types in React. For instance, defining `ButtonProps` would look like this:
+
+```ts
+import React from "react";
+
+type ButtonProps =
+  React.HTMLAttributes<HTMLButtonElement> & {
+    extraProp: string;
+  };
+
+const Button = ({ extraProp, ...props }: ButtonProps) => {
+  console.log(extraProp);
+  return <button {...props} />;
+};
+```
+
+This means that you could pass in all the props that a `<button>` element could take, plus an `extraProp`:
+
+```ts
+<Button
+  extraProp="whatever"
+  onClick={(e) => {
+
+(parameter) e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  }}
+/>;
+```
+
+But it turns out that this pattern is devilishly slow. So Jonas, following the advice of the [TypeScript Performance Wiki](https://github.com/microsoft/TypeScript/wiki/Performance), changed each of these to use an `interface` instead:
+
+```ts
+import React from "react";
+
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  extraProp: string;
+}
+```
+
+Suddenly, things got a lot snappier. The TypeScript language server was faster, and tsc ran quicker. Just from a little syntax change. Why?
+
+## Why did this happens
+
+You may have heard that `interface` is slightly faster than `type`. This is not quite true. In fact, `interface extends` is slightly faster than `&`.
+
+In an earlier version of this article, I'd posted an explanation based on some fuzzy thinking which, thanks to my old colleague [Mateusz Burzyński](https://twitter.com/AndaristRake), I now understand was wrong.
+
+The problem is more complex than I realised - check out [this thread](https://twitter.com/AndaristRake/status/1770743549325115459) for his critiques and our investigations.
+
+Hopefully, I can update this article again with a definitive description of why this happens - but nothing is simple when it comes to TypeScript performance.
+
+Suffice to say - `interface extends` is generally faster than `&`, and so it proved in this case too.
+
+## Contents
+
+- [Breaking changes](#breaking-changes)
+- [Improvements to the MDX format](#improvements-to-the-mdx-format)
+  - [Adjacent block JSX and expressions in MDX](#adjacent-block-jsx-and-expressions-in-mdx)
+  - [Await in MDX](#await-in-mdx)
+  - [ES2024 in MDX](#es2024-in-mdx)
+- [Miscellaneous](#miscellaneous)
+- [Thanks](#thanks)
+
+## Breaking changes
+
+The main breaking change is that Node.js 16 is now the minimum supported
+version.
+
+Across the ecosystem there were several small internal breaking changes.
+Everything’s released already.
+You can update all plugins now.
+If you ran into problems before, it should work now.
+
+We also removed some infrequently used deprecated APIs.
+You’re likely fine but gloss over the [v3 migration guide][migrating] if you
+get errors.
+
+Important to note when you use your lesser-known but powerful `evaluate`, `run`,
+or `outputFormat: 'function-body'` APIs, please pass the `baseUrl` option.
+That makes sure `import.meta.url`, `import`, and `export` work.
+You’ll get a runtime error when those features are used otherwise.
+
+## Improvements to the MDX format
+
+There’s also a few small improvements to the MDX format, some of which
+technically breaking.
+
+### Adjacent block JSX and expressions in MDX
+
+We now accept block expressions right next to block JSX tags:
+
+```mdx chrome=no
+<style>{`
+
+  h1 {
+    color: blue;
+  }
+
+`}</style>
+```
+
+Previously, there was a syntax error, and you had to add a newline between the
+angle brackets and the braces.
+
+### Await in MDX
+
+We now accept `await` syntax:
+
+```mdx
+{await Promise.resolve(42)}
+```
+
+Most frameworks don’t support promises.
+Whether this works depends on that.
+
+Previously, there was a runtime error that `await` was used in a context where
+it wasn’t allowed.
+
+### ES2024 in MDX
+
+You can now use modern JavaScript syntax in MDX.
+Acorn, used internally, is now instructed to use ES2024.
+
+## Miscellaneous
+
+I refactored all the docs.
+Updating every use example where needed.
+I also wrote a guide on how to inject components from anywhere:
+[§ Injecting components][injecting-components].
+
+The site is a lot faster.
+There’s a nice improved playground too: [try it out! »][playground].
+We also have proper syntax highlighting here, thanks to
+[`wooorm/markdown-tm-language`][markdown-tm-language]
+and [`wooorm/starry-night`][starry-night].
+
+The generated JS code is a little cleaner (the JSX pragma comment is removed
+and objects are sorted where needed), it also uses spreads instead of
+`Object.assign`, there’s a `'use strict'` added when needed, and the
+`MDXContent` is exported immediately.
+
+## Thanks
+
+We’d like to say thanks to all our contributors and our happy users.
+Special thanks to
+北雁云依 ([**@BeiyanYunyi**](https://github.com/BeiyanYunyi)),
+Christian Murphy ([**@ChristianMurphy**](https://github.com/ChristianMurphy)),
+JokcyLou ([**@Jokcy**](https://github.com/Jokcy)),
+Maël Nison ([**@arcanis**](https://github.com/arcanis)),
+Andreas Deininger ([**@deining**](https://github.com/deining)),
+Remco Haszing ([**@remcohaszing**](https://github.com/remcohaszing)),
+Sébastien Lorber ([**@slorber**](https://github.com/slorber)),
+Víctor Fernández ([**@victor23k**](https://github.com/victor23k)),
+Titus Wormer ([**@wooorm**](https://github.com/wooorm)),
+and anyone we may have forgotten.
+
+[injecting-components]: /guides/injecting-components/
+[markdown-tm-language]: https://github.com/wooorm/markdown-tm-language
+[migrating]: /migrating/v3/
+[playground]: /playground/
+[starry-night]: https://github.com/wooorm/starry-night

@@ -1,0 +1,2111 @@
+/* Base styles for MDX content */
+.prose {
+  color: #ecfdec;
+
+  margin: 0 auto;
+}
+
+/* Animated entrance for content */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prose > * {
+  animation: fadeInUp 0.5s ease-out forwards;
+  animation-delay: calc(var(--animation-order, 0) * 0.1s);
+  opacity: 0;
+}
+
+.prose > *:nth-child(1) {
+  --animation-order: 1;
+}
+.prose > *:nth-child(2) {
+  --animation-order: 2;
+}
+.prose > *:nth-child(3) {
+  --animation-order: 3;
+}
+.prose > *:nth-child(4) {
+  --animation-order: 4;
+}
+.prose > *:nth-child(5) {
+  --animation-order: 5;
+}
+.prose > *:nth-child(6) {
+  --animation-order: 6;
+}
+.prose > *:nth-child(7) {
+  --animation-order: 7;
+}
+.prose > *:nth-child(8) {
+  --animation-order: 8;
+}
+.prose > *:nth-child(9) {
+  --animation-order: 9;
+}
+.prose > *:nth-child(10) {
+  --animation-order: 10;
+}
+
+/* Headings with 3D effect - FIX VISIBILITY */
+.prose h1 {
+
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  letter-spacing: -0.025em;
+}
+
+.prose h1:hover {
+  transform: translateZ(10px);
+  transition: transform 0.3s ease;
+}
+
+.prose h2 {
+
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.3;
+  background: linear-gradient(to right, #10b981, #34d399);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.prose h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  /* background: linear-gradient(to right, #10b981, #34d399); */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.prose h2:hover::after {
+  transform: scaleX(1);
+}
+
+/* Ensure h3 and h4 are visible */
+.prose h3 {
+  color: #6ee7b7;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  position: relative;
+  display: inline-block;
+}
+
+.prose h3::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  bottom: 5px;
+  left: 0;
+  background-color: rgba(16, 185, 129, 0.1);
+  z-index: -1;
+  transform: skewX(-15deg);
+  transition: all 0.3s ease;
+}
+
+.prose h3:hover::before {
+  height: 20px;
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+.prose h4 {
+  color: #34d399;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  border-left: 3px solid #10b981;
+  padding-left: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.prose h4:hover {
+  border-left-width: 5px;
+  padding-left: 1rem;
+}
+
+/* Paragraph with improved readability */
+.prose p {
+  margin-bottom: 1.5rem;
+  /* line-height: 1.8; */
+  transition: all 0.2s ease;
+}
+
+.prose p:hover {
+  color: #ffffff;
+}
+
+/* MDX Content Styles */
+
+/* Fix gradient text classes */
+.gradient-text {
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-subtle {
+  background: linear-gradient(to right, #10b981, #34d399);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated link underline effect with glow */
+.prose a {
+  color: #10b981;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0 2px;
+}
+
+.prose a:hover {
+  color: #34d399;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.prose a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(to right, #10b981, #34d399);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.prose a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Blockquote with decorative elements */
+.prose blockquote {
+  margin: 1rem 0;
+  padding: 1rem 2rem 1rem 2rem;
+  border-left: 4px solid #10b981;
+  color: rgba(236, 253, 245, 0.9);
+  font-style: italic;
+  position: relative;
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 0 0.5rem 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.prose blockquote::after {
+  content: '"';
+  position: absolute;
+  bottom: -45px;
+  right: 10px;
+  font-size: 4rem;
+  color: rgba(16, 185, 129, 0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.prose blockquote p {
+  margin: 0;
+}
+
+.prose blockquote cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-style: normal;
+  color: #6ee7b7;
+  text-align: right;
+}
+
+/* Image glow effect */
+.image-glow {
+  position: relative;
+}
+
+.image-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.image-glow:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced image styling with zoom effect */
+.prose img {
+  max-width: 100%;
+  height: auto;
+  /* border-radius: 0.75rem; */
+  margin: 0;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* border: 1px solid rgba(16, 185, 129, 0.2); */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: zoom-in;
+}
+
+.prose img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
+}
+
+.prose .image-zoomed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 41, 34, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.prose .image-zoomed img {
+  max-width: 90%;
+  max-height: 90vh;
+  margin: 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Lists with custom markers and animations */
+.prose ul,
+.prose ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose ul {
+  list-style: none;
+}
+
+.prose ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+  transition: transform 0.2s ease;
+}
+
+.prose ul li:hover {
+  transform: translateX(5px);
+}
+
+.prose ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.prose ul li:hover::before {
+  color: #34d399;
+  transform: translateX(3px);
+}
+
+.prose ol {
+  list-style: none;
+  counter-reset: item;
+}
+
+.prose ol li {
+  position: relative;
+  padding-left: 2rem;
+  margin: 0.75rem 0;
+  counter-increment: item;
+  transition: transform 0.2s ease;
+}
+
+.prose ol li:hover {
+  transform: translateX(5px);
+}
+
+.prose ol li::before {
+  content: counter(item);
+  position: absolute;
+  left: 0;
+  color: #ecfdec;
+  font-weight: bold;
+  background-color: rgba(16, 185, 129, 0.2);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.prose ol li:hover::before {
+  background-color: rgba(16, 185, 129, 0.4);
+  transform: scale(1.1);
+}
+
+/* Tables with hover effects */
+.prose table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.prose thead {
+  background: linear-gradient(to right, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.2));
+}
+
+.prose th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #6ee7b7;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.3);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.prose th:hover {
+  background-color: rgba(16, 185, 129, 0.15);
+}
+
+.prose th::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #10b981, #34d399);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.prose th:hover::after {
+  transform: scaleX(1);
+}
+
+.prose td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+  transition: all 0.2s ease;
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tr:hover td {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.prose tr:nth-child(even) {
+  background-color: rgba(16, 185, 129, 0.03);
+}
+
+/* Horizontal rule with gradient */
+.prose hr {
+  margin: 3rem 0;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #10b981, transparent);
+  position: relative;
+}
+
+.prose hr::before {
+  content: "✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #002922;
+  padding: 0 1rem;
+  color: #10b981;
+  font-size: 1rem;
+}
+
+/* Code block styling */
+.prose .subheading-anchor {
+  color: #10b981;
+  margin-left: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.prose .subheading-anchor:hover {
+  opacity: 1;
+}
+
+.prose h2:hover .subheading-anchor,
+.prose h3:hover .subheading-anchor,
+.prose h4:hover .subheading-anchor {
+  opacity: 1;
+}
+
+/* Shiki code highlighting */
+.shiki-wrapper {
+  position: relative;
+  background-color: #0d1117;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+
+.shiki-wrapper::-webkit-scrollbar {
+  height: 0.375rem;
+  width: 0.375rem;
+}
+
+.shiki-wrapper::-webkit-scrollbar-track {
+  border-radius: 9999px;
+  background-color: rgba(10, 40, 30, 0.5);
+}
+
+.shiki-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+.shiki-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(16, 185, 129, 0.5);
+}
+
+/* Line numbers for code blocks */
+.line-numbers .shiki {
+  counter-reset: line;
+}
+
+.line-numbers .line {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.line-numbers .line::before {
+  content: counter(line);
+  counter-increment: line;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1rem;
+  text-align: right;
+  color: rgba(16, 185, 129, 0.4);
+  font-size: 0.75rem;
+  padding-right: 0.5rem;
+}
+
+/* Code block wrapper hover effects */
+.code-block-wrapper {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.code-block-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Enhanced code blocks with interactive features */
+.prose pre {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: #0d1117 !important;
+  overflow: hidden;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.prose pre:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 0 10px rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.prose pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  display: block;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+/* Code block toolbar */
+.prose pre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5rem;
+  background: rgba(13, 17, 23, 0.8);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: 0.75rem;
+  color: #6ee7b7;
+  z-index: 1;
+}
+
+.prose pre.language-javascript::before,
+.prose pre.language-js::before {
+  content: "JavaScript";
+}
+
+.prose pre.language-typescript::before,
+.prose pre.language-ts::before {
+  content: "TypeScript";
+}
+
+.prose pre.language-jsx::before {
+  content: "JSX";
+}
+
+.prose pre.language-tsx::before {
+  content: "TSX";
+}
+
+.prose pre.language-css::before {
+  content: "CSS";
+}
+
+.prose pre.language-html::before {
+  content: "HTML";
+}
+
+.prose pre.language-json::before {
+  content: "JSON";
+}
+
+.prose pre.language-markdown::before,
+.prose pre.language-md::before {
+  content: "Markdown";
+}
+
+.prose pre.language-bash::before,
+.prose pre.language-sh::before {
+  content: "Shell";
+}
+
+.prose pre code {
+  margin-top: 1.5rem;
+}
+
+/* Copy button for code blocks */
+.prose pre {
+  position: relative;
+}
+
+.prose pre .copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.25rem;
+  color: #10b981;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 1; /* Make always visible */
+}
+
+.prose pre .copy-button:hover {
+  background-color: rgba(16, 185, 129, 0.2);
+  transform: scale(1.05);
+}
+
+.prose pre .copy-button:active {
+  transform: scale(0.95);
+}
+
+/* Add animation for copy button */
+@keyframes copySuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.prose pre .copy-button.copied {
+  animation: copySuccess 0.3s ease-in-out;
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Remove the pseudo-element copy button to avoid confusion */
+.prose pre::after {
+  content: none;
+}
+
+.mdx-content pre::before {
+  content: none;
+}
+
+/* Line numbers for code blocks */
+.prose pre.with-line-numbers code {
+  counter-reset: line;
+}
+
+.prose pre.with-line-numbers code > span {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  padding-left: 3.5rem;
+  min-height: 1.5rem;
+}
+
+.prose pre.with-line-numbers code > span::before {
+  content: counter(line);
+  counter-increment: line;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.5rem;
+  text-align: right;
+  color: rgba(16, 185, 129, 0.4);
+  font-size: 0.75rem;
+  padding-right: 0.5rem;
+  border-right: 1px solid rgba(16, 185, 129, 0.2);
+  user-select: none;
+}
+
+/* Highlighted code lines */
+.prose .highlighted {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-left: 2px solid #10b981;
+  display: block;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: calc(1rem - 2px);
+  padding-right: 1rem;
+}
+
+/* Highlighted words */
+.prose .word {
+  background-color: rgba(16, 185, 129, 0.2);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.1);
+  transition: all 0.2s ease;
+}
+
+.prose .word:hover {
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Inline code */
+.prose :not(pre) > code {
+  background-color: rgba(10, 40, 30, 0.5);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  color: #6ee7b7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  transition: all 0.2s ease;
+}
+
+.prose :not(pre) > code:hover {
+  background-color: rgba(10, 40, 30, 0.7);
+  color: #34d399;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+.mdx-content h2,
+.mdx-content h3,
+.mdx-content h4 {
+  transition: color 0.2s;
+}
+
+.mdx-content img {
+  transition: all 0.3s;
+}
+
+.mdx-content img:hover {
+  transform: scale(1.05);
+}
+
+/* Links */
+.prose a {
+  color: #10b981;
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.prose a:hover {
+  color: #34d399;
+}
+
+.prose a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #10b981;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.prose a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose ul > li::marker,
+.prose ol > li::marker {
+  color: #10b981;
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose thead {
+  background-color: rgba(10, 40, 30, 0.5);
+}
+
+.prose th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 500;
+  color: #6ee7b7;
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.prose tr:hover {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+/* Blockquotes */
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid #10b981;
+  color: rgba(236, 253, 245, 0.8);
+  font-style: italic;
+  position: relative;
+}
+
+.prose blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  font-size: 3rem;
+  color: rgba(16, 185, 129, 0.2);
+  font-family: Georgia, serif;
+}
+
+/* Blockquotes */
+.mdx-content blockquote {
+  font-style: normal;
+  color: rgba(236, 253, 245, 0.8);
+}
+
+/* Images */
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.prose img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+}
+
+/* Horizontal rule */
+.prose hr {
+  margin: 2rem 0;
+  border: 0;
+  height: 1px;
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Highlighted code lines */
+.prose .highlighted {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-left: 2px solid #10b981;
+  padding-left: 1rem;
+  margin-left: -1rem;
+}
+
+/* Highlighted words */
+.prose .word {
+  background-color: rgba(16, 185, 129, 0.2);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+/* Anchor links */
+.prose .subheading-anchor {
+  color: #10b981;
+  margin-left: 0.25rem;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.prose .subheading-anchor:hover {
+  opacity: 1;
+}
+
+.prose h2:hover .subheading-anchor,
+.prose h3:hover .subheading-anchor,
+.prose h4:hover .subheading-anchor {
+  opacity: 1;
+}
+
+/* Custom scrollbar for code blocks */
+.prose pre::-webkit-scrollbar {
+  height: 0.375rem;
+  width: 0.375rem;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  border-radius: 9999px;
+  background-color: rgba(10, 40, 30, 0.5);
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(16, 185, 129, 0.5);
+}
+
+/* Copy button for code blocks */
+.prose .copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.25rem;
+  color: #10b981;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.prose pre:hover .copy-button {
+  opacity: 1;
+}
+
+.prose .copy-button:hover {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+.prose .copy-button:active {
+  transform: scale(0.95);
+}
+
+/* Add animation for copy button */
+@keyframes copySuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.prose .copy-button.copied {
+  animation: copySuccess 0.3s ease-in-out;
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Code syntax highlighting */
+.prose .token.comment,
+.prose .token.prolog,
+.prose .token.doctype,
+.prose .token.cdata {
+  color: #8b949e;
+}
+
+.prose .token.punctuation {
+  color: #c9d1d9;
+}
+
+.prose .token.property,
+.prose .token.tag,
+.prose .token.boolean,
+.prose .token.number,
+.prose .token.constant,
+.prose .token.symbol,
+.prose .token.deleted {
+  color: #79c0ff;
+}
+
+.prose .token.selector,
+.prose .token.attr-name,
+.prose .token.string,
+.prose .token.char,
+.prose .token.builtin,
+.prose .token.inserted {
+  color: #7ee787;
+}
+
+.prose .token.operator,
+.prose .token.entity,
+.prose .token.url,
+.prose .language-css .token.string,
+.prose .style .token.string {
+  color: #d2a8ff;
+}
+
+.prose .token.atrule,
+.prose .token.attr-value,
+.prose .token.keyword {
+  color: #ff7b72;
+}
+
+.prose .token.function,
+.prose .token.class-name {
+  color: #f2cc60;
+}
+
+.prose .token.regex,
+.prose .token.important,
+.prose .token.variable {
+  color: #ffa657;
+}
+
+.prose .token.important,
+.prose .token.bold {
+  font-weight: bold;
+}
+
+.prose .token.italic {
+  font-style: italic;
+}
+
+.prose .token.entity {
+  cursor: help;
+}
+
+/* Add a subtle animation to code blocks on hover */
+@keyframes codeBlockHover {
+  0% {
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+  }
+}
+
+.prose pre:hover {
+  animation: codeBlockHover 0.3s ease-in-out forwards;
+}
+
+/* Interactive elements */
+.prose details {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background-color: rgba(10, 40, 30, 0.3);
+  font-weight: 500;
+}
+
+.prose details[open] summary {
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.prose details > div {
+  padding: 1rem;
+}
+
+/* Keyboard shortcuts */
+.prose kbd {
+  background-color: rgba(10, 40, 30, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Highlight text */
+.prose mark {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #ecfdec;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+/* Footnotes */
+.prose .footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(16, 185, 129, 0.2);
+  font-size: 0.875rem;
+}
+
+.prose .footnote-ref {
+  font-size: 0.75rem;
+  vertical-align: super;
+}
+
+.prose .footnote-backref {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+/* Add JavaScript for copy button functionality */
+.prose pre {
+  position: relative;
+}
+
+.prose pre::after {
+  content: "Copy";
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.25rem;
+  color: #10b981;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.prose pre:hover::after {
+  opacity: 1;
+}
+
+.prose pre:active::after {
+  content: "Copied!";
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Add a subtle animation to the copy button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.prose pre:active::after {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Code blocks */
+.prose pre {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #0d1117 !important;
+  overflow-x: auto;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prose pre:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.prose pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  display: block;
+}
+
+/* Line numbers for code blocks */
+.prose .line-number::before {
+  content: attr(line);
+  display: inline-block;
+  width: 1.5rem;
+  text-align: right;
+  margin-right: 1rem;
+  color: rgba(16, 185, 129, 0.4);
+  font-size: 0.75rem;
+}
+
+/* Filename display for code blocks */
+.mdx-content .code-filename {
+  background-color: rgba(10, 40, 30, 0.5);
+  color: #6ee7b7;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-bottom: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.mdx-content .code-filename + pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0;
+}
+
+/* Interactive elements */
+.prose details {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background-color: rgba(10, 40, 30, 0.3);
+  font-weight: 500;
+}
+
+.prose details[open] summary {
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.prose details > div {
+  padding: 1rem;
+}
+
+/* Keyboard shortcuts */
+.prose kbd {
+  background-color: rgba(10, 40, 30, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Highlight text */
+.prose mark {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #ecfdec;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+/* Footnotes */
+.prose .footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(16, 185, 129, 0.2);
+  font-size: 0.875rem;
+}
+
+.prose .footnote-ref {
+  font-size: 0.75rem;
+  vertical-align: super;
+}
+
+.prose .footnote-backref {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+/* Interactive code blocks with copy button */
+.mdx-content pre {
+  position: relative;
+}
+
+.mdx-content pre::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2310b981'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.mdx-content pre:hover::before {
+  opacity: 0.7;
+}
+
+.mdx-content pre:active::before {
+  opacity: 1;
+}
+
+/* Add a subtle animation to the copy button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mdx-content pre:active::before {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Interactive elements */
+.prose details {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background-color: rgba(10, 40, 30, 0.3);
+  font-weight: 500;
+}
+
+.prose details[open] summary {
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.prose details > div {
+  padding: 1rem;
+}
+
+/* Keyboard shortcuts */
+.prose kbd {
+  background-color: rgba(10, 40, 30, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Highlight text */
+.prose mark {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #ecfdec;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+/* Footnotes */
+.prose .footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(16, 185, 129, 0.2);
+  font-size: 0.875rem;
+}
+
+.prose .footnote-ref {
+  font-size: 0.75rem;
+  vertical-align: super;
+}
+
+.prose .footnote-backref {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+/* Interactive code blocks with copy button */
+.mdx-content pre {
+  position: relative;
+}
+
+.mdx-content pre::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2310b981'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.mdx-content pre:hover::before {
+  opacity: 0.7;
+}
+
+.mdx-content pre:active::before {
+  opacity: 1;
+}
+
+/* Add a subtle animation to the copy button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mdx-content pre:active::before {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Keyboard shortcuts */
+.prose kbd {
+  background-color: rgba(10, 40, 30, 0.7);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 0 rgba(16, 185, 129, 0.2);
+  padding: 0.125rem 0.375rem;
+  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #ecfdec;
+  display: inline-block;
+  line-height: 1;
+  margin: 0 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.prose kbd:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 rgba(16, 185, 129, 0.3);
+}
+
+/* Highlight text */
+.prose mark {
+  background: linear-gradient(120deg, rgba(16, 185, 129, 0.2) 0%, rgba(52, 211, 153, 0.2) 100%);
+  color: #ecfdec;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: all 0.2s ease;
+}
+
+.prose mark:hover {
+  background: linear-gradient(120deg, rgba(16, 185, 129, 0.3) 0%, rgba(52, 211, 153, 0.3) 100%);
+}
+
+/* Footnotes */
+.prose .footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(16, 185, 129, 0.2);
+  font-size: 0.875rem;
+  position: relative;
+}
+
+.prose .footnotes::before {
+  content: "Footnotes";
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #002922;
+  padding: 0 1rem;
+  color: #10b981;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.prose .footnote-ref {
+  font-size: 0.75rem;
+  vertical-align: super;
+  color: #10b981;
+  text-decoration: none;
+  margin: 0 0.125rem;
+  transition: all 0.2s ease;
+}
+
+.prose .footnote-ref:hover {
+  color: #34d399;
+}
+
+.prose .footnote-backref {
+  display: inline-block;
+  transform: scaleX(-1);
+  color: #10b981;
+  transition: all 0.2s ease;
+}
+
+.prose .footnote-backref:hover {
+  color: #34d399;
+  transform: scaleX(-1) translateX(-3px);
+}
+
+/* Interactive details/summary */
+.prose details {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: rgba(16, 185, 129, 0.05);
+  transition: all 0.3s ease;
+}
+
+.prose details:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.prose summary {
+  padding: 1rem;
+  cursor: pointer;
+  background-color: rgba(10, 40, 30, 0.3);
+  font-weight: 500;
+  position: relative;
+  list-style: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.prose summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose summary::before {
+  content: "▶";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #10b981;
+  transition: transform 0.3s ease;
+}
+
+.prose details[open] summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.prose details[open] summary {
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.prose details > div {
+  padding: 1rem;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Callout component styling */
+.prose .callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-left-width: 4px;
+  display: flex;
+  gap: 1rem;
+  background-color: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.prose .callout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prose .callout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, transparent 100%);
+  z-index: -1;
+}
+
+.prose .callout.info {
+  background-color: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.prose .callout.info::before {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+}
+
+.prose .callout.warning {
+  background-color: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.prose .callout.warning::before {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, transparent 100%);
+}
+
+.prose .callout.error {
+  background-color: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.prose .callout.error::before {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%);
+}
+
+/* Animated code highlighting */
+@keyframes highlightLine {
+  from {
+    background-color: rgba(16, 185, 129, 0.3);
+  }
+  to {
+    background-color: rgba(16, 185, 129, 0.1);
+  }
+}
+
+.prose .highlighted {
+  animation: highlightLine 2s ease-out forwards;
+}
+
+/* Interactive code blocks with copy button */
+.prose pre {
+  position: relative;
+}
+
+.prose pre::after {
+  content: "Copy";
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.25rem;
+  color: #10b981;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0;
+  z-index: 10;
+}
+
+.prose pre:hover::after {
+  opacity: 1;
+}
+
+.prose pre:active::after {
+  content: "Copied!";
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Add a subtle animation to the copy button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.prose pre:active::after {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Interactive table of contents */
+.toc {
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  padding-right: 1rem;
+  scrollbar-width: thin ; 
+  scrollbar-color: rgba(16, 185, 129, 0.3) transparent;
+}
+
+.toc::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc::-webkit-scrollbar-thumb {
+  background-color: rgba(16, 185, 129, 0.3);
+  border-radius: 4px;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.25rem 0;
+  color: rgba(236, 253, 245, 0.7);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+  font-size: 0.875rem;
+}
+
+.toc-link:hover {
+  color: #ecfdec;
+  border-left-color: rgba(16, 185, 129, 0.5);
+}
+
+.toc-link.active {
+  color: #10b981;
+  border-left-color: #10b981;
+  font-weight: 500;
+}
+
+.toc-h2 {
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.toc-h3 {
+  padding-left: 1.5rem;
+  font-size: 0.8125rem;
+}
+
+.toc-h4 {
+  padding-left: 2.25rem;
+  font-size: 0.75rem;
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 1000;
+}
+
+/* Floating action buttons */
+.floating-actions {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 50;
+}
+
+.floating-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.floating-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  background-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15), 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.floating-button:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Animated code syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.string,
+.token.attr-value {
+  color: #7ee787;
+}
+
+.token.punctuation,
+.token.operator {
+  color: #c9d1d9;
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.property,
+.token.regex,
+.token.inserted {
+  color: #79c0ff;
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-name,
+.token.selector {
+  color: #ff7b72;
+}
+
+.token.function,
+.token.deleted,
+.token.tag {
+  color: #d2a8ff;
+}
+
+.token.tag,
+.token.selector,
+.token.keyword {
+  position: relative;
+  z-index: 1;
+}
+
+.token.tag::after,
+.token.selector::after,
+.token.keyword::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: currentColor;
+  opacity: 0.1;
+  z-index: -1;
+  border-radius: 0.125rem;
+  transition: opacity 0.2s ease;
+}
+
+.token.tag:hover::after,
+.token.selector:hover::after,
+.token.keyword:hover::after {
+  opacity: 0.2;
+}
+
+/* Animated background for code blocks */
+@keyframes gradientBg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.prose pre::before {
+  background: linear-gradient(-45deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+  background-size: 200% 200%;
+  animation: gradientBg 15s ease infinite;
+}
+
+/* Add fallback colors for all headings */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #ecfdec; /* Fallback color if gradient doesn't work */
+}
+
+
+/* Code blocks */
+.prose pre {
+  overflow-y: auto;
+  padding-right: 1rem;
+  scrollbar-width: thin ; 
+  scrollbar-color: rgba(16, 185, 129, 0.3) transparent;
+}
+
+.prose pre::-webkit-scrollbar {
+  height: 0.3rem;
+  width: 0.375rem;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  border-radius: 9999px;
+  background-color: rgba(10, 40, 30, 0.5);
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(16, 185, 129, 0.5);
+}
+
+
+
+/* Admonition styles */
+.admonition {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border-left-width: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.admonition:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.admonition::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  z-index: -1;
+}
+
+.admonition-tip {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: rgb(16, 185, 129);
+}
+
+.admonition-tip::before {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, transparent 100%);
+}
+
+.admonition-info {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: rgb(59, 130, 246);
+}
+
+.admonition-info::before {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+}
+
+.admonition-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: rgb(245, 158, 11);
+}
+
+.admonition-warning::before {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, transparent 100%);
+}
+
+.admonition-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgb(239, 68, 68);
+}
+
+.admonition-danger::before {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%);
+}
+
+.admonition-note {
+  background-color: rgba(139, 92, 246, 0.1);
+  border-color: rgb(139, 92, 246);
+}
+
+.admonition-note::before {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 100%);
+}
+
+.admonition-question {
+  background-color: rgba(14, 165, 233, 0.1);
+  border-color: rgb(14, 165, 233);
+}
+
+.admonition-question::before {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, transparent 100%);
+}
+
+.admonition-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admonition-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admonition-content {
+  margin-top: 0.5rem;
+}
+
+/* Animation for admonitions */
+.admonition {
+  animation: admonition-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes admonition-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
