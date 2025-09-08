@@ -87,16 +87,16 @@ export default function Page() {
             <FloatingNavbar />
 
             <motion.div variants={SECTION_VARIANTS}>
-              <Hero />
-            </motion.div>
+              <Hero /> 
+            </motion.div> 
 
             <motion.div variants={SECTION_VARIANTS}>
-              <AboutSection />
-            </motion.div>
+              <AboutSection /> 
+            </motion.div> 
 
             <motion.div variants={SECTION_VARIANTS}>
-              <ProjectSection />
-            </motion.div>
+              <ProjectSection /> 
+            </motion.div> 
 
             {/* <motion.div variants={SECTION_VARIANTS}>
               <BlogSection />

@@ -225,7 +225,7 @@ export default function AboutSection() {
             preset="fade-in-blur"
             speedSegment={0.3}
             as="h2"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-white"
+            className="text-3xl sm:text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-white"
           >
             {"About Me"}
           </TextEffect>

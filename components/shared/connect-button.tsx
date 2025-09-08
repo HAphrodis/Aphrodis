@@ -21,8 +21,8 @@ export function ConnectButton({
     <>
       <div className="bg-purple-100 rounded-[calc(var(--radius)+0.125rem)] border border-emerald-500/10 p-0.5">
         <Button
-          size="lg"
-          className="bg-purple-100 text-green-400 w-fit border-emerald-500/10 hover:bg-purple-100"
+          size="sm"
+          className="bg-white text-green-400 w-fit border-emerald-500/10 hover:bg-purple-100"
           onClick={() => setIsOpen(true)}
           {...props}
         >
