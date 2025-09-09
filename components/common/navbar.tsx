@@ -63,36 +63,36 @@ const navItems = [
 
 // Mobile nav items
 const mobileNavItems = [
-     {
-    label: "Github",
-    icon: FaGithub,
-    href: "https://github.com/HAphrodis",
-  },
-  {
-    label: "Linkedin",
-    icon: FaLinkedin,
-    href: "https://www.linkedin.com/in/aphrodis-hakuzweyezu-675677304",
-  },
-  {
-    label: "Instagrm",
-    icon: FaInstagram,
-    href: "https://www.instagram.com/hakuzweyezu_aphrodis",
-  },
-  {
-    label: "Twitter",
-    icon: FaXTwitter,
-    href: "https://x.com/Aphossy1?t=EO14AukrdFvPyCna4a-tmQ&s=09",
-  },
-  {
-    label: "Phone Number",
-    icon: PhoneCall,
-    href: "tel:0784343073",
-  },
-  {
-    label: "Email",
-    icon: FaEnvelope,
-    href: "mailto:hakuzweaphossy@gmail",
-  },
+  //    {
+  //   label: "Github",
+  //   icon: FaGithub,
+  //   href: "https://github.com/HAphrodis",
+  // },
+  // {
+  //   label: "Linkedin",
+  //   icon: FaLinkedin,
+  //   href: "https://www.linkedin.com/in/aphrodis-hakuzweyezu-675677304",
+  // },
+  // {
+  //   label: "Instagrm",
+  //   icon: FaInstagram,
+  //   href: "https://www.instagram.com/hakuzweyezu_aphrodis",
+  // },
+  // {
+  //   label: "Twitter",
+  //   icon: FaXTwitter,
+  //   href: "https://x.com/Aphossy1?t=EO14AukrdFvPyCna4a-tmQ&s=09",
+  // },
+  // {
+  //   label: "Phone Number",
+  //   icon: PhoneCall,
+  //   href: "tel:0784343073",
+  // },
+  // {
+  //   label: "Email",
+  //   icon: FaEnvelope,
+  //   href: "mailto:hakuzweaphossy@gmail",
+  // },
   {
     label: "More",
     icon: Menu,
@@ -317,7 +317,7 @@ export function FloatingNavbar() {
       </motion.header>
 
       {/* Bottom Navigation - Visible on mobile */}
-      <div className="fixed top-1 left-0 right-0 z-50 md:hidden">
+      <div className="fixed bottom-6 left-0 right-0 z-50 md:hidden">
         <TooltipProvider>
           <Dock
             className="mx-auto h-12 border border-purple-100/30 bg-emerald-900/10 px-3 backdrop-blur-lg"
