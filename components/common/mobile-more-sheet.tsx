@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, Search } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -28,6 +28,7 @@ export function MobileMoreSheet({
   onContactOpen,
 }: MobileMoreSheetProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [showMusicPlayer, setShowMusicPlayer] = useState(false);
 
@@ -103,6 +104,7 @@ export function MobileMoreSheet({
       if ("external" in item && item.external) {
         window.open(item.href, "_blank");
       } else {
+        router.push(item.href);
         onClose();
       }
     }

@@ -9,7 +9,7 @@ const containerVariants = {
   exit: {
     opacity: 0,
     scale: 0.95,
-    transition: { duration: 0.4, ease: "easeInOut" }, // faster exit
+    transition: { duration: 0.5, ease: "easeInOut" }, // faster exit
   },
 };
 
@@ -18,7 +18,7 @@ const textVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { delay: 1.2, duration: 0.6, ease: "easeOut" }, // show earlier
+    transition: { delay: 1.2, duration: 0.7, ease: "easeOut" }, // show earlier
   },
 };
 
@@ -53,7 +53,7 @@ export default function Loading({ onComplete }: LoadingProps) {
       {/* Spinner + Avatar */}
       <div className="relative flex justify-center items-center mb-8">
         <motion.div
-          className="absolute rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500 animate-spin"
+          className="absolute rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-200 animate-spin"
           initial={{ rotate: 0 }}
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
@@ -79,10 +79,10 @@ export default function Loading({ onComplete }: LoadingProps) {
       </motion.div>
 
       {/* Progress bar (optional, kept fast) */}
-      <div className="w-72 h-2 bg-purple-900/20 rounded-full overflow-hidden border border-purple-600/20 mt-2">
+      <div className="w-72 h-2 bg-purple-100/50 rounded-full overflow-hidden border border-purple-100/60 mt-2">
         <motion.div
           style={{ width: `${progress}%` }}
-          className="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+          className="h-full bg-gradient-to-r from-purple-200/50 to-purple-100 rounded-full shadow-[0_0_12px_rgba(139,92,246,0.7)]"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ ease: "easeInOut", duration: 0.2 }}

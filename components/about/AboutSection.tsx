@@ -243,7 +243,7 @@ export default function AboutSection() {
                 impactful solutions for positive change through communication and technical expertise.
             </p>
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 p-4 bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-center space-x-4 p-4 !bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="p-2 md:p-3 bg-white rounded-full shadow-lg hover:scale-110 transform transition duration-300">
                   <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17 20v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2H17z" />

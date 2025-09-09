@@ -215,23 +215,23 @@ const config: Config = {
             card: "#FFFFFF",
             alt: "#F3F4F6",
           },
-          dark: {
-            DEFAULT: "#020D1A",
-            100: "#0F172A",
-            200: "#1E293B",
-            300: "#334155",
-            400: "#475569",
-            500: "#627D98",
-            600: "#829AB1",
-            700: "#9FB3C8",
-            800: "#BBCBD9",
-            900: "#D9E2EC",
-            // 1000: '#F0F4F8',
-            1000: "#030712",
+          // dark: {
+          //   DEFAULT: "#020D1A",
+          //   100: "#0F172A",
+          //   200: "#1E293B",
+          //   300: "#334155",
+          //   400: "#475569",
+          //   500: "#627D98",
+          //   600: "#829AB1",
+          //   700: "#9FB3C8",
+          //   800: "#BBCBD9",
+          //   900: "#D9E2EC",
+          //   // 1000: '#F0F4F8',
+          //   1000: "#030712",
 
-            card: "#0F172A",
-            alt: "#1E293B",
-          },
+          //   card: "#0F172A",
+          //   alt: "#1E293B",
+          // },
         },
         d_surface: {
           light: {
@@ -239,11 +239,11 @@ const config: Config = {
             raised: "#F9FAFB",
             sunken: "#F3F4F6",
           },
-          dark: {
-            DEFAULT: "#0F172A",
-            raised: "#1E293B",
-            sunken: "#020D1A",
-          },
+          // dark: {
+          //   DEFAULT: "#0F172A",
+          //   raised: "#1E293B",
+          //   sunken: "#020D1A",
+          // },
         },
         d_text: {
           light: {
@@ -251,56 +251,56 @@ const config: Config = {
             secondary: "#4B5563",
             tertiary: "#6B7280",
           },
-          dark: {
-            primary: "#F9FAFB",
-            secondary: "#E5E7EB",
-            tertiary: "#D1D5DB",
-          },
+          // dark: {
+          //   primary: "#F9FAFB",
+          //   secondary: "#E5E7EB",
+          //   tertiary: "#D1D5DB",
+          // },
         },
         d_border: {
           light: "#E5E7EB",
-          dark: "#1F2937",
+          // dark: "#1F2937",
         },
         d_accent: {
           purple: {
             light: "#8B5CF6",
-            dark: "#7C3AED",
+            // dark: "#7C3AED",
           },
           pink: {
             light: "#EC4899",
-            dark: "#DB2777",
+            // dark: "#DB2777",
           },
           orange: {
             light: "#F97316",
-            dark: "#EA580C",
+            // dark: "#EA580C",
           },
         },
         d_status: {
           error: {
             light: "#EF4444",
-            dark: "#F87171",
+            // dark: "#F87171",
           },
           warning: {
             light: "#F59E0B",
-            dark: "#FBBF24",
+            // dark: "#FBBF24",
           },
           success: {
             DEFAULT: "#22C55",
             light: "#10B981",
-            dark: "#34D399",
+            // dark: "#34D399",
           },
           info: {
             light: "#3B82F6",
-            dark: "#60A5FA",
+            // dark: "#60A5FA",
           },
           navy: {
             DEFAULT: "#0a192f",
-            light: "#112240",
+            // light: "#112240",
             lightest: "#233554",
           },
           slate: {
             DEFAULT: "#8892b0",
-            light: "#a8b2d1",
+            // light: "#a8b2d1",
             lightest: "#ccd6f6",
           },
           d_white: "#e6f1ff",
