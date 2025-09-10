@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
-import MusicPlayer from "./music-player";
+// import MusicPlayer from "./music-player";
 
 const ScrollToTop: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -54,7 +54,7 @@ const ScrollToTop: React.FC = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="fixed z-50 bottom-8 left-8 md:hidden"
       >
-        <MusicPlayer variant="minimal" />
+        {/* <MusicPlayer variant="minimal" /> */}
       </motion.div>
     </>
   );

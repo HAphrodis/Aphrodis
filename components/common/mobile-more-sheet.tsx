@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import MusicPlayer from "./music-player";
+// import MusicPlayer from "./music-player";
 import { ScrollArea } from "../ui/scroll-area";
 import { quickActions } from "@/constants/cmdbar";
 import { navigationPages } from "@/constants/navItem";
@@ -208,12 +208,12 @@ export function MobileMoreSheet({
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="mb-6">
+                      {/* <div className="mb-6">
                         <h3 className="text-sm font-medium text-emerald-300 mb-3 px-2">
                           Music Player
                         </h3>
                         <MusicPlayer variant="compact" />
-                      </div>
+                      </div> */}
                     </motion.div>
                   )}
                 </AnimatePresence>

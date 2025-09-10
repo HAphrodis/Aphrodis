@@ -230,103 +230,103 @@ export default function AboutSection() {
           </TextEffect> */}
 
           <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
-          >
-            <motion.div variants={itemVariants} className="space-y-6 pr-6">
-           
-                <div className="p-8 bg-gradient-to-br from-purple-100/10 to-purple-100/5 bg-opacity-90 rounded-xl shadow-lg backdrop-blur-lg hover:scale-105 transform transition duration-300 ease-in-out">
-                  <p className="text-gray-200 mb-6 text-lg">
-                I am Aphrodis Hakuzweyezu, an Environmental Health Practitioner and full-stack 
-                developer in Kigali, Rwanda, combining science, technology, and design to create innovative, 
-                impactful solutions for positive change through communication and technical expertise.
-            </p>
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 p-4 bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div className="p-3 bg-white rounded-full shadow-lg hover:scale-110 transform transition duration-300">
-                  <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17 20v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2H17z" />
-                    <circle cx="12" cy="8" r="4" /> 
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-700">Dedicated Team</h3>
-                  <p className="text-gray-500 text-sm">
-                    Experienced in leading teams and collaborating with health professionals, designers, and developers to achieve project goals.
-                  </p>
-                </div>
+                      variants={containerVariants}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+                    >
+                      <motion.div variants={itemVariants} className="space-y-6 pr-1 md:pr-6">
+                     
+                          <div className="p-5 bg-gradient-to-br from-purple-100/10 to-purple-100/5 bg-opacity-90 rounded-xl shadow-lg backdrop-blur-lg hover:scale-105 transform transition duration-300 ease-in-out">
+                            <p className="text-gray-200 mb-6 text:md md:text-lg">
+                          I am Aphrodis Hakuzweyezu, an Environmental Health Practitioner and full-stack 
+                          developer in Kigali, Rwanda, combining science, technology, and design to create innovative, 
+                          impactful solutions for positive change through communication and technical expertise.
+                      </p>
+                      <div className="space-y-6">
+                        <div className="flex items-center space-x-4 p-4 !bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                          <div className="p-2 md:p-3 bg-white rounded-full shadow-lg hover:scale-110 transform transition duration-300">
+                            <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M17 20v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2H17z" />
+                              <circle cx="12" cy="8" r="4" /> 
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-gray-700">Dedicated Team</h3>
+                            <p className="text-gray-500 text-sm">
+                              Experienced in leading teams and collaborating with health professionals, designers, and developers to achieve project goals.
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-4 p-4 bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                          <div className="p-2 md:p-3 bg-white rounded-full shadow-lg hover:scale-110 transform transition duration-300">
+                            <svg className="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M9 21h6v-1H9v1zm3-18a4 4 0 00-4 4c0 1.38.56 2.63 1.46 3.54A5.978 5.978 0 009 12h6a5.978 5.978 0 00-1.46-3.46A4 4 0 0015 7a4 4 0 00-4-4z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-gray-700">Innovative Approach</h3>
+                            <p className="text-gray-500 text-sm">
+                              Skilled in using modern tools like Adobe Creative Suite, Microsoft Office, and web technologies to create engaging, effective solutions.
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-4 p-4 bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                          <div className="p-2 md:p-3 bg-white rounded-full shadow-lg hover:scale-110 transform transition duration-300">
+                            <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M16 14c-1.33 0-2.53.53-3.41 1.39A4.993 4.993 0 0012 20c1.33 0 2.53-.53 3.41-1.39A4.993 4.993 0 0016 14zM8 14c-1.33 0-2.53.53-3.41 1.39A4.993 4.993 0 004 20c1.33 0 2.53-.53 3.41-1.39A4.993 4.993 0 008 14zM12 4c-2.21 0-4 1.79-4 4 0 1.66 1.34 3 3 3h2c1.66 0 3-1.34 3-3 0-2.21-1.79-4-4-4z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-gray-700">Customer Centric</h3>
+                            <p className="text-gray-500 text-sm">
+                              Focused on understanding client and community needs, ensuring solutions are practical, user-friendly, and impactful.
+                            </p>
+                          </div>
+                        </div>
+                      </div>  
               </div>
-              <div className="flex items-center space-x-4 p-4 bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div className="p-3 bg-white rounded-full shadow-lg hover:scale-110 transform transition duration-300">
-                  <svg className="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 21h6v-1H9v1zm3-18a4 4 0 00-4 4c0 1.38.56 2.63 1.46 3.54A5.978 5.978 0 009 12h6a5.978 5.978 0 00-1.46-3.46A4 4 0 0015 7a4 4 0 00-4-4z" />
-                  </svg>
+            
+                      </motion.div>
+          
+                      <motion.div
+                        variants={itemVariants}
+                        className="relative space-y-8 px-6 py-6 rounded-xl bg-gradient-to-br from-purple-100/10 to-purple-100/5 border border-Purple-100/30 backdrop-blur-sm"
+                      >
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(4,120,87,0.15),transparent_70%)]" />
+                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl" />
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-400/5 rounded-full blur-3xl" />
+          
+                        <div className="relative space-y-4">
+                          <div className="space-y-2">
+                            <div className="flex items-center pt-2 gap-2">
+                              <Box className="w-5 h-5 text-white" />
+                              <h3 className="text-xl font-bold text-White">
+                               Technical Skills
+                              </h3>
+                            </div>
+                          </div>
+          
+                          <div className="space-y-6">
+                            <TechSection
+                              title="Frontend Development"
+                              techs={frontendTech}
+                              delay={0.1}
+                            />
+                            <TechSection
+                              title="Backend Development"
+                              techs={backendTech}
+                              delay={0.3}
+                            />
+                            <TechSection
+                              title="Tools & Platforms"
+                              techs={toolsTech}
+                              delay={0.5}
+                            />
+                          </div>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-700">Innovative Approach</h3>
-                  <p className="text-gray-500 text-sm">
-                    Skilled in using modern tools like Adobe Creative Suite, Microsoft Office, and web technologies to create engaging, effective solutions.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4 p-4 bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div className="p-3 bg-white rounded-full shadow-lg hover:scale-110 transform transition duration-300">
-                  <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M16 14c-1.33 0-2.53.53-3.41 1.39A4.993 4.993 0 0012 20c1.33 0 2.53-.53 3.41-1.39A4.993 4.993 0 0016 14zM8 14c-1.33 0-2.53.53-3.41 1.39A4.993 4.993 0 004 20c1.33 0 2.53-.53 3.41-1.39A4.993 4.993 0 008 14zM12 4c-2.21 0-4 1.79-4 4 0 1.66 1.34 3 3 3h2c1.66 0 3-1.34 3-3 0-2.21-1.79-4-4-4z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-700">Customer Centric</h3>
-                  <p className="text-gray-500 text-sm">
-                    Focused on understanding client and community needs, ensuring solutions are practical, user-friendly, and impactful.
-                  </p>
-                </div>
-              </div>
-            </div>  
-    </div>
-  
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="relative space-y-8 px-6 py-6 rounded-xl bg-gradient-to-br from-purple-100/10 to-purple-100/5 border border-Purple-100/30 backdrop-blur-sm"
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(4,120,87,0.15),transparent_70%)]" />
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-400/5 rounded-full blur-3xl" />
-
-              <div className="relative space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center pt-2 gap-2">
-                    <Box className="w-5 h-5 text-white" />
-                    <h3 className="text-xl font-bold text-White">
-                     Technical Skills
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <TechSection
-                    title="Frontend Development"
-                    techs={frontendTech}
-                    delay={0.1}
-                  />
-                  <TechSection
-                    title="Backend Development"
-                    techs={backendTech}
-                    delay={0.3}
-                  />
-                  <TechSection
-                    title="Tools & Platforms"
-                    techs={toolsTech}
-                    delay={0.5}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
+              </section>
   );
 }
