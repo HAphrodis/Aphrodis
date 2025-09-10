@@ -340,7 +340,7 @@ export function FloatingNavbar() {
                             "text-white shadow-[0_0_8px_rgba(16,185,129,0.4)]",
                         )}
                       >
-                        <item.icon className="h-[40px] w-[40px]" />
+                        <item.icon className="h-[50px] w-[50px]" />
                       </button>
                     ) : (
                       <Link
@@ -355,7 +355,7 @@ export function FloatingNavbar() {
                             "text-emerald-100 shadow-[0_0_8px_rgba(16,185,129,0.4)]",
                         )}
                       >
-                        <item.icon className="h-[48px] w-[48px]"/>
+                        <item.icon className="h-[50px] w-[50px]"/>
                       </Link>
                     )}
                   </TooltipTrigger>

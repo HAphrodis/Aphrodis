@@ -78,7 +78,7 @@ export const siteMetadata: Metadata = {
     title: "Hakuzweyezu Aphrodis | Full Stack Developer",
     description:
       "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building scalable applications and exceptional user experiences.",
-    images: ["https://www.aphrodis.me/screenshot.jpg"],
+    images: ["https://www.aphrodis.me/screenshot.png"],
   },
   openGraph: {
     title: "Hakuzweyezu Aphrodis | Full Stack Developer",
@@ -88,7 +88,7 @@ export const siteMetadata: Metadata = {
     siteName: "aphrodis Portfolio",
     images: [
       {
-        url: "https://www.aphrodis.me/screenshot.jpg",
+        url: "https://www.aphrodis.me/screenshot.png",
         width: 1200,
         height: 630,
         alt: "Hakuzweyezu Aphrodis - Full Stack Developer Portfolio",

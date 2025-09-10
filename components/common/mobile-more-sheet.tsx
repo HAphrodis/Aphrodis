@@ -272,15 +272,15 @@ export function MobileMoreSheet({
                                     "p-2 rounded-lg transition-colors duration-300",
                                     isActive
                                       ? "border-purple-100/80 shadow-[0_0_10px_rgba(16,185,129,0.3)]"
-                                      : "border-purple-100/70 group-hover:bg-emerald-500/20",
+                                      : "border-purple-100/70 group-hover:bg-purple-300/20",
                                   )}
                                 >
                                   <Icon
                                     className={cn(
                                       "h-4 w-4 transition-colors duration-300",
                                       isActive
-                                        ? "text-emerald-200"
-                                        : "text-emerald-300 group-hover:text-emerald-100",
+                                        ? "text-white"
+                                        : "text-white group-hover:text-emerald-100",
                                     )}
                                   />
                                 </div>
@@ -314,7 +314,7 @@ export function MobileMoreSheet({
                                       : "opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0",
                                   )}
                                 >
-                                  <ExternalLink className="h-3 w-3 text-emerald-300" />
+                                  <ExternalLink className="h-3 w-3 text-white" />
                                 </div>
                               )}
                             </div>
