@@ -24,7 +24,6 @@ import {
   Grid,
   ImageIcon,
   Menu,
-  PhoneCall,
   Contact,
   Home,
 } from "lucide-react";
@@ -317,12 +316,12 @@ export function FloatingNavbar() {
       </motion.header>
 
       {/* Bottom Navigation - Visible on mobile */}
-      <div className="fixed bottom-6 left-0 right-0 z-50 md:hidden">
+       <div className="fixed top-0 right-3 h-full z-50 md:hidden flex flex-col items-end">
         <TooltipProvider>
           <Dock
-            className="mx-auto h-12 border border-purple-100/30 bg-emerald-900/10 px-3 backdrop-blur-lg"
-            iconSize={32}
-            iconMagnification={40}
+            className="text-white font-bold"
+            iconSize={48}
+            iconMagnification={56}
             iconDistance={100}
           >
             {mobileNavItems.map((item) => (
@@ -334,14 +333,14 @@ export function FloatingNavbar() {
                         onClick={() => handleMobileItemClick(item)}
                         aria-label={item.label}
                         className={cn(
-                          "flex h-full w-full items-center justify-center rounded-full transition-all duration-100",
-                          "text-emerald-100/70 hover:text-emerald-100",
+                          "flex h-full w-full items-center justify-center transition-all duration-100",
+                          "text-white",
                           item.action === "more" &&
                             isDropdownActive("More") &&
-                            "bg-emerald-500/20 text-emerald-100 shadow-[0_0_8px_rgba(16,185,129,0.4)]",
+                            "text-white shadow-[0_0_8px_rgba(16,185,129,0.4)]",
                         )}
                       >
-                        <item.icon className="h-[18px] w-[18px]" />
+                        <item.icon className="h-[40px] w-[40px]" />
                       </button>
                     ) : (
                       <Link
@@ -350,13 +349,13 @@ export function FloatingNavbar() {
                          rel="noopener noreferrer"
                         aria-label={item.label}
                         className={cn(
-                          "flex h-full w-full items-center justify-center rounded-full transition-all duration-100",
+                          "flex h-full w-full items-center justify-center transition-all duration-100",
                           "text-emerald-100/70 hover:text-emerald-100",
                           pathname === item.href &&
-                            "bg-emerald-500/20 text-emerald-100 shadow-[0_0_8px_rgba(16,185,129,0.4)]",
+                            "text-emerald-100 shadow-[0_0_8px_rgba(16,185,129,0.4)]",
                         )}
                       >
-                        <item.icon className="h-[18px] w-[100px]"/>
+                        <item.icon className="h-[48px] w-[48px]"/>
                       </Link>
                     )}
                   </TooltipTrigger>

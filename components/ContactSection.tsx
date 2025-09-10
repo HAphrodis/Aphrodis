@@ -141,7 +141,7 @@ export default function ContactSection() {
       >
         {/* Left Side */}
         <motion.div
-          className="md:w-1/3 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-10 text-white flex flex-col justify-between"
+          className="md:w-1/3 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white flex flex-col justify-between"
           variants={itemVariants}
         >
         
