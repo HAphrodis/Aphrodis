@@ -165,24 +165,29 @@ export function FloatingNavbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed left-0 right-0 top-4 z-50 mx-auto hidden max-w-4xl px-4 md:block"
+        className={cn(
+          "fixed left-0 right-0 top-0 z-50 mx-auto hidden max-w-4xl px-4 md:block",
+          scrolled
+            ? ""
+            : "bg-transparent py-4 backdrop-blur-md"
+        )}
       >
         <nav className="relative">
           <motion.div
             className={cn(
               "absolute left-1/2 -translate-x-1/2 transition-all duration-300",
-              scrolled && "scale-95",
+              scrolled && "bg-white shadow-lg w-screen",
             )}
-            whileHover={{ scale: scrolled ? 0.98 : 1.02 }}
-            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            // whileHover={{ scale: scrolled ? 0.98 : 1.02 }}
+            // transition={{ type: "spring", stiffness: 400, damping: 30 }}
           >
             {/* Background with enhanced glassmorphism. */}
             <div
               className={cn(
-                "absolute inset-0 rounded-full border transition-all duration-300",
+                " inset-0 transition-all duration-300",
                 scrolled
-                  ? "border-purple-100/10 bg-emerald-900/20 backdrop-blur-xl shadow-lg"
-                  : "border-purple-100/10 bg-emerald-900/10 backdrop-blur-md",
+                  ? ""
+                  : " border-purple-100/10 bg-emerald-900/10 backdrop-blur-md absolute rounded-full border ",
               )}
             />
 
@@ -194,71 +199,82 @@ export function FloatingNavbar() {
             <div className="flex-shrink-0 gap-2">
            <div className="flex items-center gap-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-sm">
       
-       <Link
-            href="https://github.com/HAphrodis"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group p-2 rounded-full text-white border border-white transition-transform duration-300"
-            aria-label="GitHub Profile"
-          >
-            <FaGithub className="w-4 h-4" />
-            <span className="absolute -inset-1 rounded-full opacity-50 transition duration-300" aria-hidden="true"></span>
-          </Link>
-
-      <Link
-            href="https://www.linkedin.com/in/aphrodis-hakuzweyezu-675677304"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group p-2 rounded-full text-white border border-white transition-transform duration-300"
-            aria-label="Linkedin Profile"
-          >
-            <FaLinkedin className="w-4 h-4" />
-            <span className="absolute -inset-1 rounded-full opacity-50 transition duration-300" aria-hidden="true"></span>
-          </Link>
-      <Link
-            href="https://www.instagram.com/hakuzweyezu_aphrodis"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group p-2 rounded-full text-white border border-white transition-transform duration-300"
-            aria-label="Instagrm Profile"
-          >
-            <FaInstagram className="w-4 h-4" />
-            <span className="absolute -inset-1 rounded-full opacity-50 transition duration-300" aria-hidden="true"></span>
-          </Link>
-     <Link
-            href="https://x.com/Aphossy1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group p-2 rounded-full text-white border border-white transition-transform duration-300"
-            aria-label="Twitter Profile"
-          >
-            <FaXTwitter className="w-4 h-4" />
-            <span className="absolute -inset-1 rounded-full opacity-50 transition duration-300" aria-hidden="true"></span>
-          </Link>
-
         <Link
-            href="tel:0784343073"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group p-2 rounded-full text-white border border-white transition-transform duration-300"
-            aria-label="Phone Number"
-          >
-            <FaPhone className="w-4 h-4" />
-            <span className="absolute -inset-1 rounded-full opacity-50 transition duration-300" aria-hidden="true"></span>
-          </Link>
-       
-        <Link
-            href="mailto:hakuzweaphossy@gmail"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group p-2 rounded-full text-white border border-white transition-transform duration-300"
-            aria-label="My Email"
-          >
-            <FaEnvelope className="w-4 h-4" />
-            <span className="absolute -inset-1 rounded-full opacity-50 transition duration-300" aria-hidden="true"></span>
-          </Link>
-    </div>
-          </div>
+                      href="https://github.com/HAphrodis"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        "p-2 rounded-full border transition",
+                        scrolled
+                          ? "text-gray-700 hover:text-green-400 border-gray-700"
+                          : "text-white border-white"
+                      )}
+                    >
+                      <FaGithub className="w-3 h-3" />
+                    </Link>
+                    <Link
+                      href="https://www.linkedin.com/in/aphrodis-hakuzweyezu-675677304"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        "p-2 rounded-full border transition",
+                        scrolled
+                          ? "text-gray-700 hover:text-green-400 border-gray-700"
+                          : "text-white border-white"
+                      )}
+                    >
+                      <FaLinkedin className="w-3 h-3" />
+                    </Link>
+                    <Link
+                      href="https://www.instagram.com/hakuzweyezu_aphrodis"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        "p-2 rounded-full border transition",
+                        scrolled
+                          ? "text-gray-700 hover:text-green-400 border-gray-700"
+                          : "text-white border-white"
+                      )}
+                    >
+                      <FaInstagram className="w-3 h-3" />
+                    </Link>
+                    <Link
+                      href="https://x.com/Aphossy1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        "p-2 rounded-full border transition",
+                        scrolled
+                          ? "text-gray-700 hover:text-green-400 border-gray-700"
+                          : "text-white border-white"
+                      )}
+                    >
+                      <FaXTwitter className="w-3 h-3" />
+                    </Link>
+                    <Link
+                      href="tel:0784343073"
+                      className={cn(
+                        "p-2 rounded-full border transition",
+                        scrolled
+                          ? "text-gray-700 hover:text-green-400 border-gray-700"
+                          : "text-white border-white"
+                      )}
+                    >
+                      <FaPhone className="w-3 h-3" />
+                    </Link>
+                    <Link
+                      href="mailto:hakuzweaphossy@gmail"
+                      className={cn(
+                        "p-2 rounded-full border transition",
+                        scrolled
+                          ? "text-gray-700 hover:text-green-400 border-gray-700"
+                          : "text-white border-white"
+                      )}
+                    >
+                      <FaEnvelope className="w-3 h-3" />
+                    </Link>
+                  </div>
+            </div>
 
             <ul className="relative flex items-center gap-1 px-2 py-1">
   
@@ -275,12 +291,15 @@ export function FloatingNavbar() {
                       <motion.div
                         className={cn(
                           "flex items-center gap-1 rounded-xl gag-3 px-4 py-2.5 text-sm font-medium transition-all duration-300 relative overflow-hidden",
-                          "text-emerald-100/80 hover:text-emerald-100 hover:border-b-2",
+                          "",
                           pathname === item.href &&
                             "px-2 py-1.5 text-emerald-100",
-                        )}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                            scrolled
+                                ? "text-gray-700 hover:border-b-2 hover:border-green-400 hover:text-green-400"
+                                : "text-white hover:text-emerald-100 hover:border-b-2"
+                            )}
+                        // whileHover={{ scale: 1.05 }}
+                        // whileTap={{ scale: 0.95 }}
                       >
                         {/* Active indicator */}
                         {pathname === item.href && (
@@ -323,6 +342,7 @@ export function FloatingNavbar() {
             iconSize={48}
             iconMagnification={56}
             iconDistance={100}
+            
           >
             {mobileNavItems.map((item) => (
               <DockIcon key={item.label} className="px-0">
