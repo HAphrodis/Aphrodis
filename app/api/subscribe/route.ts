@@ -110,7 +110,7 @@ export async function POST(req: Request) {
       await Promise.all([
         // Send confirmation email to the subscriber
         resend.emails.send({
-          from: "Aphossy's Portfolio <info@aphrodis.online>",
+          from: "Aphrodis's Portfolio <info@aphrodis.online>",
           to: email,
           subject: "Welcome to my newsletter!",
           react: SubscribeConfirmationEmail({ email }),

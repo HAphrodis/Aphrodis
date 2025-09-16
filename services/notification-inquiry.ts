@@ -130,7 +130,7 @@ export async function getNotificationStats() {
         info: notifications.filter((n) => n.type === "info").length,
       },
     };
-
+   
     return stats;
   } catch (error) {
     console.error("Failed to get notification stats:", error);

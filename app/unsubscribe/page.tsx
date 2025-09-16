@@ -3,9 +3,9 @@ import { UnsubscribeForm } from "./_components/unsubscribe-form";
 import { createMetadata } from "../metadata-utils";
 
 export const metadata: Metadata = createMetadata({
-  title: "Unsubscribe | Ishimwe Jean Baptiste Newsletter",
+  title: "Unsubscribe | Aphrodis Hakuzweyezu Newsletter",
   description:
-    "Manage your subscription preferences for Ishimwe Jean Baptiste newsletter",
+    "Manage your subscription preferences for Aphrodis Hakuzweyezu newsletter",
   path: "/unsubscribe",
 });
 

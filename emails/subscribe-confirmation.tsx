@@ -241,8 +241,8 @@ const logo = {
   margin: "0 auto",
   borderRadius: "50%",
   objectFit: 'cover' as const,
-  width: "120px",
-  height: "120px",
+  width: "90px",
+  height: "90px",
   display: "block",
 };
 

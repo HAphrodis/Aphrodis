@@ -31,13 +31,18 @@ export const ContactConfirmationEmail = ({
         <Container style={container}>
           {/* Header with logo */}
           <Section style={headerSection}>
-            <Img
-              src={`${baseUrl}/images/posso.png`}
-              alt="Portfolio Logo"
-              width="120"
-              height="auto"
-              style={logo}
-            />
+           <div style={{ display: 'inline-block', overflow: 'hidden', borderRadius: '50%' }}
+             onMouseOver={e => (e.currentTarget.firstChild as HTMLElement).style.transform = 'scale(1.5)'}
+             onMouseOut={e => (e.currentTarget.firstChild as HTMLElement).style.transform = 'scale(1)'}
+           >
+             <Img
+               src={`${baseUrl}/images/aphro.jpg`}
+               alt="Portfolio Logo"
+               width="500"
+               height="500"
+               style={{ ...logo, transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)", cursor: "zoom-in" }}
+             />
+           </div>
           </Section>
 
           {/* Confirmation Banner */}
@@ -71,7 +76,7 @@ export const ContactConfirmationEmail = ({
             </Text>
 
             <Section style={ctaSection}>
-              <Button style={ctaButton} href={`${baseUrl}/projects`}>
+              <Button style={ctaButton} href={`${baseUrl}/work`}>
                 Explore My Projects
               </Button>
             </Section>
@@ -142,6 +147,11 @@ const headerSection = {
 
 const logo = {
   margin: "0 auto",
+  borderRadius: "50%",
+  objectFit: 'cover' as const,
+  width: "90px",
+  height: "90px",
+  display: "block",
 };
 
 const confirmationBanner = {

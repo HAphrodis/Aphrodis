@@ -56,13 +56,13 @@ export const ContactNotificationEmail = ({
           <Section style={headerSection}>
             <Row>
               <Column>
-                <Img
-                  src={`${baseUrl}/images/posso.png`}
-                  alt="Portfolio Logo"
-                  width="120"
-                  height="auto"
-                  style={logo}
-                />
+              <Img
+                src={`${baseUrl}/images/aphro.jpg`}
+                alt="Portfolio Logo"
+                width="500"
+                height="500"
+                style={logo}
+              />
               </Column>
             </Row>
           </Section>
@@ -207,7 +207,13 @@ const headerSection = {
 
 const logo = {
   margin: "0 auto",
+  borderRadius: "50%",
+  objectFit: 'cover' as const,
+  width: "250px",
+  height: "250px",
+  display: "block",
 };
+
 
 const contentSection = {
   padding: "10px 40px 30px",

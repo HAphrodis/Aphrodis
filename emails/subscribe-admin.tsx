@@ -20,7 +20,7 @@ interface SubscribeAdminProps {
 }
 
 export const SubscribeAdminEmail = ({ email }: SubscribeAdminProps) => {
-  const baseUrl = "hhttps://www.aphrodis.online";
+  const baseUrl = "https://www.aphrodis.online";
   const currentDate = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -49,8 +49,8 @@ export const SubscribeAdminEmail = ({ email }: SubscribeAdminProps) => {
                 <Img
                   src={`${baseUrl}/images/aphro.jpg`}
                   alt="Portfolio Logo"
-                  width="120"
-                  height="auto"
+                  width="500"
+                  height="500"
                   style={logo}
                 />
               </Column>
@@ -247,6 +247,11 @@ const headerSection = {
 
 const logo = {
   margin: "0 auto",
+  borderRadius: "50%",
+  objectFit: 'cover' as const,
+  width: "90px",
+  height: "90px",
+  display: "block",
 };
 
 const contentSection = {
