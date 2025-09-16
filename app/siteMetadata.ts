@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const siteMetadata: Metadata = {
-  metadataBase: new URL("https://www.aphrodis.me"),
+  metadataBase: new URL("https://www.aphrodis.online"),
   title: {
     default: "Aphrodis | Full Stack Developer",
     template: "%s | HAphrodis Portfolio",
@@ -12,7 +12,7 @@ export const siteMetadata: Metadata = {
   authors: [
     {
       name: "Hakuzweyezu Aphrodis",
-      url: "https://www.aphrodis.me",
+      url: "https://www.aphrodis.online",
     },
   ],
   generator: "Next.js",
@@ -60,9 +60,9 @@ export const siteMetadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.aphrodis.me",
+    canonical: "https://www.aphrodis.online",
     languages: {
-      "en-US": "https://www.aphrodis.me",
+      "en-US": "https://www.aphrodis.online",
     },
   },
   icons: {
@@ -78,17 +78,17 @@ export const siteMetadata: Metadata = {
     title: "Hakuzweyezu Aphrodis | Full Stack Developer",
     description:
       "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building scalable applications and exceptional user experiences.",
-    images: ["https://www.aphrodis.me/screenshot.png"],
+    images: ["https://www.aphrodis.online/screenshot.png"],
   },
   openGraph: {
     title: "Hakuzweyezu Aphrodis | Full Stack Developer",
     description:
       "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building scalable applications and exceptional user experiences.",
-    url: "https://www.aphrodis.me",
+    url: "https://www.aphrodis.online",
     siteName: "aphrodis Portfolio",
     images: [
       {
-        url: "https://www.aphrodis.me/screenshot.png",
+        url: "https://www.aphrodis.online/screenshot.png",
         width: 1200,
         height: 630,
         alt: "Hakuzweyezu Aphrodis - Full Stack Developer Portfolio",

@@ -49,7 +49,7 @@ export function UnsubscribeForm({ initialEmail }: UnsubscribeFormProps) {
       const selectedReason =
         reason === "Other (please specify)" ? customReason : reason;
 
-      const response = await fetch("/api/subscriber/unsubscribe", {
+      const response = await fetch("/api/subscribers/unsubscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,6 +70,8 @@ export function UnsubscribeForm({ initialEmail }: UnsubscribeFormProps) {
 
       setSuccess(true);
       setStep(3);
+      // Redirect to success page after successful unsubscribe
+      router.push("/unsubscribe/success");
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "An unexpected error occurred",

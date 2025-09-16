@@ -1,6 +1,6 @@
 export default function manifest() {
   return {
-    name: "Ishimwe Jean Baptiste",
+    name: "Aphrodis Hakuzweyezu",
     short_name: "Ishimwe",
     icons: [
       {

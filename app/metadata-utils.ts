@@ -4,7 +4,7 @@ export function createMetadata({
   title,
   description,
   path,
-  ogImage = "/screenshot.jpg",
+  ogImage = "/screenshot.png",
   type = "website",
   noIndex = false,
   author = "Aphrodis",
@@ -17,7 +17,7 @@ export function createMetadata({
   noIndex?: boolean;
   author?: string | string[];
 }): Metadata {
-  const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN || "https://www.aphrodis.me";
+  const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN || "https://www.aphrodis.online";
 
   // Ensure base URL has proper protocol
   const baseUrl = BASE_URL.startsWith("http")
@@ -114,7 +114,7 @@ export function createPageJsonLd({
   dateModified?: string;
   author?: string;
 }) {
-  const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN || "https://www.aphrodis.me";
+  const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN || "https://www.aphrodis.online";
   const url = `${BASE_URL}${path}`;
 
   const baseJsonLd = {

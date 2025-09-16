@@ -2,7 +2,7 @@
 import type { MetadataRoute } from "next";
 import { formatUrl } from "./sitemap-utils";
 
-const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN || "https://www.hbapte.me";
+const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN || "https://www.aphrodis.online";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date();
