@@ -110,14 +110,14 @@ export async function POST(req: Request) {
       await Promise.all([
         // Send confirmation email to the subscriber
         resend.emails.send({
-          from: "Aphrodis's Portfolio <info@aphrodis.online>",
+          from: "Aphrodis's Portfolio <admin@aphrodis.online>",
           to: email,
           subject: "Welcome to my newsletter!",
           react: SubscribeConfirmationEmail({ email }),
         }),
         // Send notification to admin
         resend.emails.send({
-          from: "Portfolio Subscriptions <info@aphrodis.online>",
+          from: "Portfolio Subscriptions <admin@aphrodis.online>",
           to: process.env.CONTACT_EMAIL!,
           subject: `New Newsletter Subscription: ${email}`,
           react: SubscribeAdminEmail({ email }),
