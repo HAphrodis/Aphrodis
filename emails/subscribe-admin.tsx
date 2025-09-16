@@ -20,7 +20,7 @@ interface SubscribeAdminProps {
 }
 
 export const SubscribeAdminEmail = ({ email }: SubscribeAdminProps) => {
-  const baseUrl = "https://www.possomushrooms.shop";
+  const baseUrl = "hhttps://www.aphrodis.online";
   const currentDate = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -47,7 +47,7 @@ export const SubscribeAdminEmail = ({ email }: SubscribeAdminProps) => {
             <Row>
               <Column>
                 <Img
-                  src={`${baseUrl}/images/posso.png`}
+                  src={`${baseUrl}/images/aphro.jpg`}
                   alt="Portfolio Logo"
                   width="120"
                   height="auto"

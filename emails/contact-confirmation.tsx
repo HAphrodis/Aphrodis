@@ -20,7 +20,7 @@ interface ContactConfirmationProps {
 export const ContactConfirmationEmail = ({
   name,
 }: ContactConfirmationProps) => {
-  const baseUrl = "https://possomushrooms.shop";
+  const baseUrl = "https://www.aphrodis.online";
   const currentYear = new Date().getFullYear();
 
   return (

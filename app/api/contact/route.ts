@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
     await Promise.all([
       // Confirmation email to the sender
       resend.emails.send({
-        from: "Aphrodis's Portfolio <info@possomushrooms.shop>",
+        from: "Aphrodis's Portfolio <info@aphrodis.online>",
         to: email,
         subject: "Thank you for your message",
         react: ContactConfirmationEmail({ name }),
@@ -109,7 +109,7 @@ export async function POST(req: NextRequest) {
 
       // Notification email to admin (now includes phone + subject)
       resend.emails.send({
-        from: "Portfolio Contact <info@possomushrooms.shop>",
+        from: "Portfolio Contact <info@aphrodis.online>",
         to: process.env.CONTACT_EMAIL!,
         replyTo: email,
         subject: `New Contact Message from ${name}`,

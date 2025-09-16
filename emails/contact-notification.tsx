@@ -30,7 +30,7 @@ export const ContactNotificationEmail = ({
   phone,
   subject,
 }: ContactNotificationProps) => {
-  const baseUrl = "https://possomushrooms.shop";
+  const baseUrl = "https://www.aphrodis.online";
   const currentDate = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",

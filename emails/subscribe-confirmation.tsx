@@ -22,7 +22,7 @@ interface SubscribeConfirmationProps {
 export const SubscribeConfirmationEmail = ({
   email,
 }: SubscribeConfirmationProps) => {
-  const baseUrl = "https://possomushrooms.shop";
+  const baseUrl = "https://www.aphrodis.online";
   // const currentYear = new Date().getFullYear()
 
   return (
@@ -37,10 +37,10 @@ export const SubscribeConfirmationEmail = ({
           {/* Header with logo */}
           <Section style={headerSection}>
             <Img
-              src={`${baseUrl}/images/posso.png`}
+              src={`${baseUrl}/images/aphro.jpg`}
               alt="Portfolio Logo"
               width="120"
-              height="auto"
+              height="120"
               style={logo}
             />
           </Section>
@@ -239,6 +239,11 @@ const headerSection = {
 
 const logo = {
   margin: "0 auto",
+  borderRadius: "50%",
+  objectFit: 'cover' as const,
+  width: "120px",
+  height: "120px",
+  display: "block",
 };
 
 const welcomeBanner = {
