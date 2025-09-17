@@ -1,17 +1,18 @@
-// lib\redis.ts
+// lib/redis.ts
 import Redis from "ioredis";
+import * as dotenv from "dotenv";
 
-// For Scripts
-import * as dotenv from "dotenv"
-
-dotenv.config({ path: ['.env.local', ] })
-
+dotenv.config({ path: [".env.local"] });
 
 if (!process.env.REDIS_URL) {
-  throw new Error("REDIS_URL is not defined in the environment variables");
+  throw new Error("❌ REDIS_URL is not defined in the environment variables");
 }
 
-const redisClient = new Redis(process.env.REDIS_URL);
+const redisClient = new Redis(process.env.REDIS_URL, {
+  maxRetriesPerRequest: null,  // 🔑 prevents retry crash
+  enableReadyCheck: false,     // 🔑 avoids stuck "ready check"
+  tls: {},                     // 🔑 required for `rediss://`
+});
 
 redisClient.on("error", (err) => {
   console.error("🔴 Redis Client Error:", err);
@@ -25,7 +26,7 @@ redisClient.on("ready", () => {
   console.log("✅ Redis Client Ready");
 });
 
-// Add a function to test Redis operations
+// Utility function to test Redis
 export async function testRedisOperations() {
   try {
     await redisClient.set("test_key", "test_value");
