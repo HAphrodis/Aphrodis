@@ -1,7 +1,7 @@
 // services\subscriber-service.ts
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 as uuidv4 } from "uuid";
-import redis from "@/lib/redis";
+import redis from "@/utils/redis";
 import type { Subscriber, SubscriberFilters } from "@/types/subscriber";
 
 const SUBSCRIBER_KEY_PREFIX = "subscriber:";

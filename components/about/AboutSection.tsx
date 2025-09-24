@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Box } from "lucide-react";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
@@ -17,13 +17,20 @@ const frontendTech = [
   { label: "Next.js", icon: "devicon-nextjs-plain", color: "#000000" },
   { label: "TailwindCSS", icon: "devicon-tailwindcss-plain", color: "#06B6D4" },
   { label: "Bootstrap", icon: "devicon-bootstrap-plain", color: "#7952B3" },
+  { label: "Sass", icon: "devicon-sass-original", color: "#CC6699" },
+  { label: "Vite", icon: "devicon-vite-plain", color: "#646CFF" },
 ];
 
-const backendTech = [
+const backendTech = [ 
   { label: "Node.js", icon: "devicon-nodejs-plain", color: "#339933" },
   { label: "MongoDB", icon: "devicon-mongodb-plain", color: "#47A248" },
   { label: "PostgreSQL", icon: "devicon-postgresql-plain", color: "#336791" },
+  { label: "Express", icon: "devicon-express-original", color: "#000000" },
+  { label: "Docker", icon: "devicon-docker-plain", color: "#2496ED" },
+  { label: "GraphQL", icon: "devicon-graphql-plain", color: "#E10098" },
+  { label: "Render", icon: "devicon-render-original", color: "#46E3B7" }, // Render's branding teal
 ];
+
 
 // ...existing code...
 const toolsTech = [
@@ -45,6 +52,7 @@ const toolsTech = [
     ),
     color: "#FF3366",
   },
+  { label: "Pivotal Tracker", icon: "custom-pivotaltracker", color: "#517A9E" },
   { label: "Premiere Pro", icon: "devicon-premierepro-plain", color: "#9999FF" },
   { label: "After Effects", icon: "devicon-aftereffects-plain", color: "#9999FF" },
   // New additions:
@@ -95,7 +103,7 @@ const TechBadge = ({
 }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
-    className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100/40 rounded-2xl border border-emerald-800/30 hover:border-emerald-400/50 transition-colors"
+    className="inline-flex items-center gap-2 px-4 py-2 border-emerald-100/40 rounded-2xl border hover:border-emerald-400/50 transition-colors"
   >
     {customIcon ? (
       <span className="text-xl">{customIcon}</span>
@@ -168,7 +176,7 @@ export default function AboutSection() {
     }
   }, [isInView, controls]);
 
-  const containerVariants = {
+  const containerVariants:Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -178,7 +186,7 @@ export default function AboutSection() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants:Variants = {
     hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
     visible: {
       opacity: 1,

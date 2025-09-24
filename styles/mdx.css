@@ -61,10 +61,10 @@
   margin-top: 2.5rem;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  background: linear-gradient(to right, #10b981, #3b82f6);
+  background: linear-gradient(to right, #0e1f1d, #3b82f6);
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  color: #0e1f1d;
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transform-style: preserve-3d;
   perspective: 1000px;
@@ -86,7 +86,7 @@
   background: linear-gradient(to right, #10b981, #34d399);
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  color: #0e1f1d;
   position: relative;
   overflow: hidden;
 }
@@ -110,7 +110,7 @@
 
 /* Ensure h3 and h4 are visible */
 .prose h3 {
-  color: #6ee7b7;
+  color:#0e1f1d;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -138,7 +138,7 @@
 }
 
 .prose h4 {
-  color: #34d399;
+  color: #0e1f1d;
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
@@ -158,10 +158,6 @@
   margin-bottom: 1.5rem;
   /* line-height: 1.8; */
   transition: all 0.2s ease;
-}
-
-.prose p:hover {
-  color: #ffffff;
 }
 
 /* MDX Content Styles */
@@ -249,7 +245,7 @@
   margin-top: 1rem;
   font-size: 0.875rem;
   font-style: normal;
-  color: #6ee7b7;
+  color:#0e1f1d;
   text-align: right;
 }
 
@@ -338,7 +334,7 @@
 }
 
 .prose ul li::before {
-  content: "→";
+  content: "";
   position: absolute;
   left: 0;
   color: #10b981;
@@ -409,7 +405,7 @@
   padding: 1rem;
   text-align: left;
   font-weight: 600;
-  color: #6ee7b7;
+  color:#0e1f1d;
   border-bottom: 2px solid rgba(16, 185, 129, 0.3);
   position: relative;
   transition: all 0.2s ease;
@@ -597,7 +593,7 @@
   align-items: center;
   padding: 0 1rem;
   font-size: 0.75rem;
-  color: #6ee7b7;
+  color:#0e1f1d;
   z-index: 1;
 }
 
@@ -759,7 +755,7 @@
   background-color: rgba(10, 40, 30, 0.5);
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
-  color: #6ee7b7;
+  color:#0e1f1d;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.875rem;
   white-space: nowrap;
@@ -863,7 +859,7 @@
   padding: 0.75rem 1rem;
   text-align: left;
   font-weight: 500;
-  color: #6ee7b7;
+  color:#0e1f1d;
 }
 
 .prose td {
@@ -1250,7 +1246,7 @@
 /* Filename display for code blocks */
 .mdx-content .code-filename {
   background-color: rgba(10, 40, 30, 0.5);
-  color: #6ee7b7;
+  color:#0e1f1d;
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
   border-top-left-radius: 0.5rem;

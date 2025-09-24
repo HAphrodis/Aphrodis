@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import { motion, AnimatePresence, useAnimation, Variants } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -107,7 +107,7 @@ export function TestimonialCarousel() {
     }
   };
 
-  const variants = {
+  const variants:Variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,

@@ -4,7 +4,6 @@ export interface Post {
   slug: string;
   excerpt: string;
   updatedAt: string;
-  isFeatured: boolean;
   featuredPhoto: {
     url: string;
   };

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 as uuidv4 } from "uuid";
-import redisClient from "./redis";
+import redisClient from "../utils/redis";
 
 // Base class for Redis schemas
 export class RedisSchema {

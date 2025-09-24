@@ -3,13 +3,13 @@ import { build } from "velite";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
+ images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "i.scdn.co",
-        port: "",
-        pathname: "/**",
+        protocol: 'https',
+        hostname: 'us-west-2.graphassets.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Box } from "lucide-react";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
@@ -109,7 +109,7 @@ export default function AboutSection() {
     }
   }, [isInView, controls]);
 
-  const containerVariants = {
+  const containerVariants:Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -119,7 +119,7 @@ export default function AboutSection() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants:Variants = {
     hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
     visible: {
       opacity: 1,

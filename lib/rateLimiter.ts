@@ -1,6 +1,6 @@
 // lib\rateLimiter.ts
 "use server";
-import redis from "./redis";
+import redis from "../utils/redis";
 import { headers } from "next/headers";
 
 interface RateLimitResult {

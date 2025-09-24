@@ -1,4 +1,4 @@
-import Footer from "@/components/blog/BlogFooter";
+import Footer from "@/components/common/footer";
 import { FloatingNavbar } from "@/components/common/navbar";
 import React from "react";
 

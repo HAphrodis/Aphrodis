@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type AnimatedTextProps = {
@@ -18,7 +18,8 @@ export default function AnimatedText({
 }: AnimatedTextProps) {
   const words = text.split(" ");
 
-  const container = {
+  // Container variants
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
@@ -26,23 +27,24 @@ export default function AnimatedText({
     }),
   };
 
-  const child = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
+  // Child variants
+  const child: Variants = {
     hidden: {
       opacity: 0,
       y: 20,
       filter: "blur(10px)",
       transition: {
-        type: "spring",
+        type: "spring" as const, // ✅ explicit literal type
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        type: "spring" as const, // ✅ explicit literal type
         damping: 12,
         stiffness: 100,
       },
@@ -58,7 +60,11 @@ export default function AnimatedText({
       viewport={{ once }}
     >
       {words.map((word, index) => (
-        <motion.span key={index} className="inline-block mr-1" variants={child}>
+        <motion.span
+          key={index}
+          className="inline-block mr-1"
+          variants={child}
+        >
           {word}
         </motion.span>
       ))}

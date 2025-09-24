@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants, Transition } from "framer-motion";
 import Footer from "@/components/common/footer";
 import ContactSection from "@/components/ContactSection";
 import { FloatingNavbar } from "@/components/common/navbar";
@@ -12,7 +12,8 @@ import PageLoader from "@/components/common/page-loader";
 import { MouseLight } from "@/components/shared/mouse-light";
 import Hero from "@/components/Homepage";
 
-const CONTENT_VARIANTS = {
+// ✅ Type-safe variants
+const CONTENT_VARIANTS: Variants = {
   hidden: {
     y: 50,
     opacity: 0,
@@ -25,11 +26,11 @@ const CONTENT_VARIANTS = {
       stiffness: 100,
       damping: 30,
       staggerChildren: 0.1,
-    },
+    } as Transition, // 👈 fixes TS complaint
   },
 };
 
-const SECTION_VARIANTS = {
+const SECTION_VARIANTS: Variants = {
   hidden: {
     y: 30,
     opacity: 0,
@@ -39,8 +40,8 @@ const SECTION_VARIANTS = {
     opacity: 1,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
-    },
+      ease: "easeOut", // 👈 this is valid easing
+    } as Transition,
   },
 };
 
@@ -87,16 +88,16 @@ export default function Page() {
             <FloatingNavbar />
 
             <motion.div variants={SECTION_VARIANTS}>
-              <Hero /> 
-            </motion.div> 
+              <Hero />
+            </motion.div>
 
             <motion.div variants={SECTION_VARIANTS}>
-              <AboutSection /> 
-            </motion.div> 
+              <AboutSection />
+            </motion.div>
 
             <motion.div variants={SECTION_VARIANTS}>
-              <ProjectSection /> 
-            </motion.div> 
+              <ProjectSection />
+            </motion.div>
 
             {/* <motion.div variants={SECTION_VARIANTS}>
               <BlogSection />

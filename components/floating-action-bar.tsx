@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Share2, ArrowUp, BookmarkPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ShareButtons } from "@/components/blog/share-buttons";
 import { toast } from "sonner";
+import ShareButtons from "./blogs/ShareButtons";
 
 interface FloatingActionBarProps {
   url: string;

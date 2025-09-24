@@ -30,24 +30,25 @@ export default function Hero() {
   }, []);
 
   const transitionVariants = {
-    item: {
-      hidden: {
-        opacity: 0,
-        filter: "blur(12px)",
-        y: 12,
-      },
-      visible: {
-        opacity: 1,
-        filter: "blur(0px)",
-        y: 0,
-        transition: {
-          type: "spring",
-          bounce: 0.3,
-          duration: 1.5,
-        },
+  item: {
+    hidden: {
+      opacity: 0,
+      filter: "blur(12px)",
+      y: 12,
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      transition: {
+        type: "spring" as const, // ✅ 'as const' ensures literal type
+        bounce: 0.3,
+        duration: 1.5,
       },
     },
-  };
+  },
+};
+
 
   return (
   <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">

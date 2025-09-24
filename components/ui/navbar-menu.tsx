@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-const transition = {
-  type: "spring",
+// Define transition with exact literal types
+const transition: Transition = {
+  type: "spring" as const,
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,

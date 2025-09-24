@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import { DrawLineText } from "../gsap/draw-line-text";
 import SignatureText from "./signature-text";
 
-const containerVariants = {
+const containerVariants:Variants = {
   hidden: {
     opacity: 1,
   },
@@ -19,7 +19,7 @@ const containerVariants = {
   },
 };
 
-const textVariants = {
+const textVariants:Variants = {
   hidden: {
     opacity: 0,
     y: 20,
@@ -35,7 +35,7 @@ const textVariants = {
   },
 };
 
-const progressVariants = {
+const progressVariants:Variants = {
   hidden: {
     width: "0%",
   },

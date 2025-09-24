@@ -13,10 +13,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Link from "next/link";
+import PageHeader from "@/components/shared/page-header";
 import { useEffect, useState } from "react";
 import { primaryLinks, socialLinks } from "@/constants/links";
 import { ParticlesBackground } from "@/components/shared/particles-background";
-import PageHeader from "@/components/shared/page-header";
 
 export default function LinksPage() {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });

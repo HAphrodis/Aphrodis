@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { X, ExternalLink, Search } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -54,7 +54,7 @@ export function MobileMoreSheet({
     {} as Record<string, typeof allItems>,
   );
 
-  const containerVariants = {
+  const containerVariants:Variants = {
     hidden: { x: "100%" },
     visible: {
       x: 0,
@@ -76,7 +76,7 @@ export function MobileMoreSheet({
     },
   };
 
-  const itemVariants = {
+  const itemVariants:Variants = {
     hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
@@ -88,7 +88,7 @@ export function MobileMoreSheet({
     },
   };
 
-  const backdropVariants = {
+  const backdropVariants:Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
     exit: { opacity: 0 },

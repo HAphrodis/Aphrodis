@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const AnimatedText = ({
   text,
@@ -7,7 +7,7 @@ const AnimatedText = ({
   text: string;
   className: string;
 }) => {
-  const variants = {
+  const variants:Variants = {
     hidden: { opacity: 0, x: -50 },
     visible: {
       opacity: 1,
