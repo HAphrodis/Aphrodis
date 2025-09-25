@@ -1,7 +1,6 @@
-// lib\rateLimiter.ts
 "use server";
-import redis from "../utils/redis";
 import { headers } from "next/headers";
+import redis from "./redis";
 
 interface RateLimitResult {
   success: boolean;
@@ -48,12 +47,11 @@ export async function rateLimit(
       remaining: 0,
       reset: new Date(Date.now() + duration * 1000),
     };
-  } else {
-    return {
-      success: true,
-      limit,
-      remaining: Math.max(0, limit - currentUsage),
-      reset: new Date(Date.now() + duration * 1000),
-    };
   }
+  return {
+    success: true,
+    limit,
+    remaining: Math.max(0, limit - currentUsage),
+    reset: new Date(Date.now() + duration * 1000),
+  };
 }

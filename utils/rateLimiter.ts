@@ -1,6 +1,5 @@
-// utils\rateLimiter.ts
 "use server";
-import redis from "@/utils/redis";
+import redisClient from "@/lib/redis";
 import { headers } from "next/headers";
 
 interface RateLimitResult {
@@ -29,7 +28,7 @@ export async function rateLimit(
 
   const rateLimitKey = `ratelimit:${key}:${hash}`;
 
-  const response = await redis
+  const response = await redisClient
     .pipeline()
     .incr(rateLimitKey)
     .expire(rateLimitKey, duration)
@@ -48,12 +47,11 @@ export async function rateLimit(
       remaining: 0,
       reset: new Date(Date.now() + duration * 1000),
     };
-  } else {
-    return {
-      success: true,
-      limit,
-      remaining: Math.max(0, limit - currentUsage),
-      reset: new Date(Date.now() + duration * 1000),
-    };
   }
+  return {
+    success: true,
+    limit,
+    remaining: Math.max(0, limit - currentUsage),
+    reset: new Date(Date.now() + duration * 1000),
+  };
 }

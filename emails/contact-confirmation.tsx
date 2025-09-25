@@ -93,14 +93,14 @@ export const ContactConfirmationEmail = ({
               <br />
               Aphrodis Hakuzweyezu
               <br />
-              Full Stack Developer
+              Public Health Pactitioner
             </Text>
           </Section>
 
           {/* Footer */}
           <Section style={footer}>
             <Text style={footerText}>
-              Aphrodis Hakuzweyezu | Full Stack Developer
+              Aphrodis Hakuzweyezu | Public Health Pactitioner
             </Text>
             <Text style={footerText}>
               <Link href={baseUrl} style={footerLink}>

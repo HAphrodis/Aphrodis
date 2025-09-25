@@ -1,5 +1,5 @@
 // scripts/add-user.js
-import redisClient from "../utils/redis.js"
+import redisClient from "../lib/redis.js"
 import StaffMember from "../models/Staff.js"
 import { hashPassword } from "../utils/passwordUtils.js"
 

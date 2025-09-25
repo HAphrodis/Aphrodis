@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
-import redisClient from "@/utils/redis";
+import redisClient from "@/lib/redis";
 import { refreshSpotifyAccessToken, getSpotifyAccessToken } from "@/lib/auth";
 
 // Redis key for storing current song

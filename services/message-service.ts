@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 as uuidv4 } from "uuid";
-import redis from "@/utils/redis";
+import redis from "@/lib/redis";
 import type { Message, MessageFilters } from "@/models/Message";
 
 const MESSAGE_KEY_PREFIX = "message:";

@@ -2,7 +2,7 @@
 "use server";
 
 import { v4 as uuidv4 } from "uuid";
-import redisClient from "@/utils/redis";
+import redisClient from "@/lib/redis";
 import { cookies } from "next/headers";
 
 const OWNER_ID = "portfolio_owner"; // Unique identifier for the portfolio owner

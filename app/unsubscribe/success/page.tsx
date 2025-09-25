@@ -4,9 +4,9 @@ import { CheckCircle2 } from "lucide-react";
 import { createMetadata } from "@/app/metadata-utils";
 
 export const metadata: Metadata = createMetadata({
-  title: "Sorry to see you go | Ishimwe Jean Baptiste Newsletter",
+  title: "Sorry to see you go | Aphrodis Newsletter",
   description:
-    "You have been successfully unsubscribed from the Ishimwe Jean Baptiste newsletter",
+    "You have been successfully unsubscribed from the Aphrodis newsletter",
   path: "/unsubscribe/success",
 });
 
@@ -24,8 +24,7 @@ export default function UnsubscribeSuccessPage() {
           </h1>
 
           <p className="mb-8 text-gray-600">
-            You have been successfully unsubscribed from the Ishimwe Jean
-            Baptiste newsletter. We&apos;re sorry to see you go and appreciate
+            You have been successfully unsubscribed from the Aphrodis newsletter. We&apos;re sorry to see you go and appreciate
             your feedback.
           </p>
 

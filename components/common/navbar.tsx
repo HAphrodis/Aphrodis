@@ -187,12 +187,12 @@ export function FloatingNavbar() {
                 " inset-0 transition-all duration-300",
                 scrolled
                   ? ""
-                  : " border-purple-100/10 bg-emerald-900/10 backdrop-blur-md absolute rounded-full border ",
+                  : " border-purple-100/20 bg-purple-900/10 backdrop-blur-md absolute rounded-full border ",
               )}
             />
 
             {/* Animated background glow */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500/5 via-emerald-400/10 to-emerald-500/5 opacity-0 transition-opacity duration-500 hover:opacity-100" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/5 via-purple-400/10 to-emerald-500/5 opacity-0 transition-opacity duration-500 hover:opacity-100" />
 
             <div className="flex justify-between gap-4 items-center">
             

@@ -1,5 +1,5 @@
 import { RedisSchema, RedisIndex } from "@/lib/redis-schema";
-import redisClient from "@/utils/redis"; // Import redisClient
+import redisClient from "@/lib/redis"; // Import redisClient
 
 export interface ISession {
   id: string;
