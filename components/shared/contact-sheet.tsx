@@ -124,10 +124,7 @@ export function ContactSheet({
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent
-        side="bottom"
-        className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-emerald-500/20 text-white p-6 rounded-t-xl max-h-[90vh] max-w-[48rem] mx-auto overflow-y-auto"
-      >
+      <SheetContent side="bottom" className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-emerald-500/20 text-white p-6 rounded-t-xl max-h-[90vh] max-w-[48rem] mx-auto overflow-auto [&::-webkit-scrollbar]:hidden scrollbar-hide" >
         <div className="max-w-3xl mx-auto">
           {/* Social Links
           <div className="flex justify-center gap-4 mb-10 flex-wrap">

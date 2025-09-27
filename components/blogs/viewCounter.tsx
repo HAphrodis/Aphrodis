@@ -1,17 +1,18 @@
-'use client';
+// components\blog\viewCounter.tsx
+"use client";
 
-import { useEffect, useState, useRef } from 'react';
-import { useCountUp } from 'react-countup';
-import { Eye } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
-import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import { useEffect, useState, useRef } from "react";
+import { Eye } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import NumberFlow from "@number-flow/react";
 
 interface ViewCounterProps {
   slug: string;
@@ -20,66 +21,44 @@ interface ViewCounterProps {
 
 export default function ViewCounter({
   slug,
-  initialCount = 0
+  initialCount = 0,
 }: ViewCounterProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [count, setCount] = useState(initialCount);
-  const countUpRef = useRef<HTMLElement>(null!);
-
-  const { update } = useCountUp({
-    ref: countUpRef,
-    start: initialCount,
-    end: count,
-    duration: 1,
-    separator: ','
-  });
+  const hasIncrementedRef = useRef(false);
 
   useEffect(() => {
-    const fetchViews = async () => {
-      try {
-        const response = await fetch('/api/views', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ slug })
-        });
+    const incrementView = async () => {
+      if (hasIncrementedRef.current) return;
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Failed to fetch view count');
-        }
+      try {
+        const response = await fetch("/api/views", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ slug }),
+        });
 
         const data = await response.json();
         setCount(data.count);
-        update(data.count);
-        setIsLoading(false);
+        hasIncrementedRef.current = true;
       } catch (error) {
-        console.error('Error fetching views:', error);
-        setError((error as Error).message || 'An error occurred');
+        console.error("Error incrementing views:", error);
+      } finally {
         setIsLoading(false);
       }
     };
 
-    fetchViews();
-  }, [slug, update]);
+    incrementView();
+  }, [slug]);
 
   if (isLoading) {
     return (
       <div className="flex items-center space-x-2">
-        <Eye className="h-4 w-4 text-muted-foreground" />
+        <Eye className="text-muted-foreground h-4 w-4" />
         <Skeleton className="h-4 w-16" />
       </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <span className="flex items-center space-x-2 text-sm text-red-500">
-        <Eye className="h-4 w-4" />
-        <span>{error}</span>
-      </span>
     );
   }
 
@@ -88,29 +67,56 @@ export default function ViewCounter({
       <Tooltip>
         <TooltipTrigger>
           <motion.div
-            className="flex items-center space-x-2 text-sm bg-gray-100 rounded-full px-3 py-1 hover:bg-gray-200 transition-colors duration-200"
+            className="group relative flex items-center space-x-2 rounded-xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 px-4 py-2 transition-all duration-300 hover:from-blue-500/20 hover:to-cyan-500/20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-          >
+            whileHover={{
+              rotateY: [-5, 5, -5, 0],
+              transition: { duration: 0.5 },
+            }}>
             <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 5 }}
-            >
-              <Eye className="h-4 w-4 text-primary" />
+              className="relative"
+              animate={{
+                y: [0, -2, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+              }}>
+              <Eye className="h-4 w-4 text-blue-800" />
+              <motion.div
+                className="absolute -inset-1 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100"
+                animate={{
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Number.POSITIVE_INFINITY,
+                }}
+              />
             </motion.div>
-            <span className="flex items-center">
-              <span
-                ref={countUpRef}
-                className={cn(
-                  'font-medium',
-                  count > 1000 ? 'text-primary' : 'text-gray-700'
-                )}
-              >
-                {count}
+            <div className="flex items-center space-x-1">
+              <div className="relative overflow-hidden">
+                <NumberFlow
+                  value={count}
+                  locales="en-US"
+                  format={{ useGrouping: true }}
+                  animated={true}
+                  className={cn(
+                    "font-medium",
+                    count > 1000
+                      ? "text-blue-500"
+                      : "text-[#04877F] dark:text-[#04877F]",
+                  )}
+                />
+              </div>
+              <span className="hidden text-sm text-gray-500 sm:block dark:text-gray-400">
+                views
               </span>
-              <span className="ml-1 text-gray-600">views</span>
-            </span>
+            </div>
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-cyan-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </motion.div>
         </TooltipTrigger>
         <TooltipContent>
@@ -120,4 +126,3 @@ export default function ViewCounter({
     </TooltipProvider>
   );
 }
-

@@ -2,7 +2,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Chelsea_Market } from "next/font/google";
+import { Inter } from "next/font/google"; // ✅ import a sans-serif font
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
@@ -11,10 +11,10 @@ import { jsonLd } from "./json-ld";
 import ClientLayout from "./clientLayout";
 import Script from "next/script"; // ✅ import Script
 
-// Load Chelsea Market font
-const chelseaMarket = Chelsea_Market({
+// Load Inter font (sans-serif)
+const inter = Inter({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"], // adjust weights if needed
 });
 
 export const metadata: Metadata = siteMetadata;
@@ -42,7 +42,7 @@ export default function RootLayout({
           />
         </head>
         <body
-          className={`${chelseaMarket.className} antialiased [&::-webkit-scrollbar]:w-1.5  
+          className={`${inter.className} antialiased [&::-webkit-scrollbar]:w-1.5  
             [&::-webkit-scrollbar-track]:bg-[#002922] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-emerald-600
             dark:[&::-webkit-scrollbar-track]:bg-emerald-700 dark:[&::-webkit-scrollbar-thumb]:bg-[#002922]`}
         >

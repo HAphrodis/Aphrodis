@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 interface BannerProps {
   currentPage: string;
@@ -24,20 +23,7 @@ export default function Banner({
       />
       <div className="absolute inset-0 bg-[#001D23]/80"></div>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-        <h1 className="mb-4 text-4xl font-bold md:text-5xl">{formattedPage}</h1>
-        <nav className="text-sm md:text-base" aria-label="Breadcrumb">
-          <ol className="flex items-center space-x-2">
-            <li>
-              <Link className="hover:underline" href="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <span className="mx-2">/</span>
-            </li>
-            <li aria-current="page">{formattedPage}</li>
-          </ol>
-        </nav>
+        <h1 className="mb-4 text-2xl leading-tight font-bold text-white md:text-3xl">{formattedPage}</h1>
       </div>
     </div>
   );

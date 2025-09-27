@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { SubscribeForm } from "./_components/subscribe-form";
 import { createMetadata } from "../metadata-utils";
+import { ParticlesBackground } from "@/components/shared/particles-background";
+import { ServicesIconsBackground } from "@/components/shared/services-icons-background";
 
 export const metadata: Metadata = createMetadata({
-  title: "Subscribe | Ishimwe Jean Baptiste Newsletter",
+  title: "Subscribe",
   description: "Subscribe to the Hbapte newsletter for updates",
   path: "/subscribe",
 });
@@ -18,9 +20,16 @@ export default async function SubscribePage({
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 px-4 py-20">
-        <div className="mx-auto w-full max-w-4xl">
-          <SubscribeForm initialEmail={email} />
+     <div className="flex min-h-screen flex-col items-center justify-center relative font-sans">
+        <div className="top-0 z-auto w-screen bg-[radial-gradient(#ffffff33_1px,transparent_1px)] bg-[size:20px_20px]">
+           {/* Background layers (pointer-events-none ensures they don't block clicks) */}
+             <div className="absolute top-0 left-0 w-full h-full -z-20" >
+           <ServicesIconsBackground />
+           <ParticlesBackground />
+         </div>
+          <div className="relative z-50 mx-auto w-full max-w-4xl px-2 pt-30 pb-20">
+            <SubscribeForm initialEmail={email} />
+          </div>
         </div>
       </div>
     </>

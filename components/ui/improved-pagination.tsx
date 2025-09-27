@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Pagination,
@@ -8,8 +10,6 @@ import {
   PaginationLink,
 } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight, Loader } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface ImprovedPaginationProps {
   currentPage: number;
@@ -85,12 +85,11 @@ export function ImprovedPagination({
           <PaginationItem>
             <motion.div whileHover={{ x: -2 }} whileTap={{ scale: 0.95 }}>
               <Button
-                variant="outline"
-                size="icon"
-                className="h-9 w-9 rounded-full border-[#cafff7] text-[#11922f] hover:bg-[#cafff7]/20 hover:text-[#11922f]"
+                className="h-9 w-9 rounded-full border-[#cafff7] text-primary hover:bg-[#cafff7]/20 hover:text-primary"
                 disabled={currentPage === 1 || loading}
                 onClick={() => onPageChange(currentPage - 1)}
-              >
+                size="icon"
+                variant="outline">
                 <ChevronLeft className="h-4 w-4" />
                 <span className="sr-only">Previous page</span>
               </Button>
@@ -110,12 +109,11 @@ export function ImprovedPagination({
                     className={cn(
                       "h-9 w-9 rounded-full border border-[#cafff7] p-0 text-sm",
                       currentPage === page
-                        ? "bg-[#11922f] text-white hover:bg-[#00753c] hover:text-white"
-                        : "text-[#11922f] hover:bg-[#cafff7]/20 hover:text-[#11922f]",
+                        ? "bg-primary text-white hover:bg-[#00753c] hover:text-white"
+                        : "text-primary hover:bg-[#cafff7]/20 hover:text-primary",
                     )}
-                    onClick={() => onPageChange(page as number)}
                     isActive={currentPage === page}
-                  >
+                    onClick={() => onPageChange(page as number)}>
                     {page}
                   </PaginationLink>
                 </motion.div>
@@ -127,12 +125,11 @@ export function ImprovedPagination({
           <PaginationItem>
             <motion.div whileHover={{ x: 2 }} whileTap={{ scale: 0.95 }}>
               <Button
-                variant="outline"
-                size="icon"
-                className="h-9 w-9 rounded-full border-[#cafff7] text-[#11922f] hover:bg-[#cafff7]/20 hover:text-[#11922f]"
+                className="h-9 w-9 rounded-full border-[#cafff7] text-primary hover:bg-[#cafff7]/20 hover:text-primary"
                 disabled={currentPage === totalPages || loading}
                 onClick={() => onPageChange(currentPage + 1)}
-              >
+                size="icon"
+                variant="outline">
                 <ChevronRight className="h-4 w-4" />
                 <span className="sr-only">Next page</span>
               </Button>
@@ -143,7 +140,7 @@ export function ImprovedPagination({
 
       {/* Loading indicator */}
       {loading && (
-        <div className="flex items-center justify-center text-sm text-[#11922f]">
+        <div className="flex items-center justify-center text-sm text-primary">
           <Loader className="mr-2 h-4 w-4 animate-spin" />
           Loading articles...
         </div>

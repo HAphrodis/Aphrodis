@@ -75,7 +75,7 @@ export function NewsletterForm({
         );
       }
 
-      // Success case
+      // Success case.
       toast.success("Successfully subscribed!", {
         description: "Thank you for subscribing to my newsletter.",
         duration: 5000,
@@ -120,7 +120,7 @@ export function NewsletterForm({
                 isHovered && "scale-110 rotate-3",
               )}
             />
-            <h3
+            <p
               className={cn(
                 "font-medium",
                 variant === "default" && "text-xl",
@@ -129,7 +129,7 @@ export function NewsletterForm({
               )}
             >
               Subscribe to my newsletter
-            </h3>
+            </p>
           </div>
           <p
             className={cn(

@@ -248,7 +248,7 @@ export default function AboutSection() {
                   <p className="text-gray-200 mb-6 text:md md:text-lg">
                 I am Aphrodis Hakuzweyezu, an Environmental Health Practitioner and full-stack 
                 developer in Kigali, Rwanda, combining science, technology, and design to create innovative, 
-                impactful solutions for positive change through communication and technical expertise.
+                impactful solutions for positive change through communication and technical skills.
             </p>
             <div className="space-y-6">
               <div className="flex items-center space-x-4 p-4 !bg-gradient-to-tr from-purple-200 via-blue-200 to-green-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">

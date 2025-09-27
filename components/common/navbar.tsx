@@ -43,9 +43,9 @@ const navItems = [
     href: "/about",
   },
   {
-    label: "Work",
+    label: "Blogs",
     icon: Grid,
-    href: "/work",
+    href: "/blogs",
   },
   {
     label: "Services",
@@ -187,7 +187,7 @@ export function FloatingNavbar() {
                 " inset-0 transition-all duration-300",
                 scrolled
                   ? ""
-                  : " border-purple-100/20 bg-purple-900/10 backdrop-blur-md absolute rounded-full border ",
+                  : " border-purple-100/20 bg-[#04877F]/20 backdrop-blur-md absolute rounded-full border ",
               )}
             />
 
@@ -197,9 +197,8 @@ export function FloatingNavbar() {
             <div className="flex justify-between gap-4 items-center">
             
             <div className="flex-shrink-0 gap-2">
-           <div className="flex items-center gap-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-sm">
-      
-        <Link
+           <div className="flex items-center gap-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-sm"> 
+                   <Link 
                       href="https://github.com/HAphrodis"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -209,9 +208,9 @@ export function FloatingNavbar() {
                           ? "text-gray-700 hover:text-green-400 border-gray-700"
                           : "text-white border-white"
                       )}
-                    >
+                    > 
                       <FaGithub className="w-3 h-3" />
-                    </Link>
+                    </Link> 
                     <Link
                       href="https://www.linkedin.com/in/aphrodis-hakuzweyezu-675677304"
                       target="_blank"
@@ -336,6 +335,7 @@ export function FloatingNavbar() {
 
       {/* Bottom Navigation - Visible on mobile */}
        <div className="fixed top-0 right-3 h-full z-50 md:hidden flex flex-col items-end">
+        
         <TooltipProvider>
           <Dock
             className="text-white font-bold"

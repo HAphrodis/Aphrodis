@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, type SVGMotionProps } from "motion/react";
+import { motion, Variants, type SVGMotionProps } from "motion/react";
 
-const pathVariants = {
+const pathVariants:Variants = {
   hidden: {
     pathLength: 0,
     fillOpacity: 0,

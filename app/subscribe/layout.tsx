@@ -1,7 +1,7 @@
-// components\layout\DefaultLayout.tsx
-import React from "react";
-import BackToTop from "@/components/shared/back-to-top";
 import Footer from "@/components/common/footer";
+import { FloatingNavbar } from "@/components/common/navbar";
+import React from "react";
+import { Toaster } from "sonner";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -10,8 +10,9 @@ interface DefaultLayoutProps {
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   return (
     <>
-      <main className="bg-white dark:bg-white">{children}</main>
-      <BackToTop />
+      <FloatingNavbar />
+      <Toaster richColors />
+      <main>{children}</main>
       <Footer />
     </>
   );

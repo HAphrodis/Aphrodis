@@ -4,8 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, BookOpen, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import SubscribeNewsletter from './SubscribeNewsletter';
 import { useReadingProgress } from '@/hooks/use-reading-progress';
+import { NewsletterForm } from './newsletter-form';
 
 interface Heading {
   id: string;
@@ -28,8 +28,11 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   const readingProgress = useReadingProgress();
   const isComplete = readingProgress >= 98;
 
+  // ✅ Only keep title (level === 1)
+  const mainHeadings = headings.filter((heading) => heading.level === 1);
+
   const handleScroll = useCallback(() => {
-    const headingElements = headings.map((heading) =>
+    const headingElements = mainHeadings.map((heading) =>
       document.getElementById(heading.id)
     );
 
@@ -43,14 +46,14 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
       const currentHeadingId = visibleHeadings[0].id;
       setActiveId(currentHeadingId);
 
-      // Mark this heading as visited
+      // Mark as visited
       setVisitedHeadings((prev) => {
         const newSet = new Set(prev);
         newSet.add(currentHeadingId);
         return newSet;
       });
     }
-  }, [headings]);
+  }, [mainHeadings]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,8 +74,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   const scrollToHeading = (headingId: string) => {
     const targetElement = document.getElementById(headingId);
     if (targetElement) {
-      const navbarHeight = 64; // Adjust this value based on your navbar height
-      const yOffset = -navbarHeight - 16; // Additional 16px for some breathing room
+      const navbarHeight = 64;
+      const yOffset = -navbarHeight - 16;
       const y =
         targetElement.getBoundingClientRect().top +
         window.pageYOffset +
@@ -92,8 +95,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
       <div className="rounded-xl border border-[#cafff7]/50 bg-white p-6 shadow-md">
         <div className="mb-2 flex items-center justify-between lg:mb-4">
           <div className="flex items-center">
-            <BookOpen className="mr-2 h-5 w-5 text-[#11922f]" />
-            <p className="font-bold text-[#11922f]">In this Article</p>
+            <BookOpen className="mr-2 h-5 w-5 text-[#04877F]" />
+            <p className="font-bold text-[#04877F]">In this Article</p>
           </div>
           <Button
             variant="ghost"
@@ -112,11 +115,11 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
           </Button>
         </div>
 
-        {/* Reading progress indicator */}
+        {/* Reading progress */}
         <div className="mb-4 hidden lg:block">
           <div className="h-2 w-full rounded-full bg-gray-100">
             <div
-              className="h-full rounded-full bg-[#11922f] transition-all duration-300"
+              className="h-full rounded-full bg-[#04877F] transition-all duration-300"
               style={{ width: `${readingProgress}%` }}
             ></div>
           </div>
@@ -141,7 +144,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
             >
               <div className="scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 max-h-[50vh] overflow-y-auto pr-2">
                 <ul className="space-y-1">
-                  {headings.map((heading) => (
+                  {mainHeadings.map((heading) => (
                     <motion.li
                       key={heading.id}
                       initial={{ opacity: 0, x: -10 }}
@@ -151,15 +154,14 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
                       <button
                         className={`group flex w-full items-center justify-between rounded-md py-2 text-left text-sm transition-colors duration-200 ease-in-out ${
                           activeId === heading.id
-                            ? 'bg-[#cafff7]/20 font-medium text-[#11922f]'
+                            ? 'bg-[#cafff7]/20 font-medium text-[#04877F]'
                             : 'text-gray-600 hover:bg-gray-100'
                         }`}
-                        style={{ paddingLeft: `${heading.level * 8}px` }}
                         onClick={() => scrollToHeading(heading.id)}
                       >
-                        <span className="line-clamp-1">{heading.text}</span>
+                        <span>{heading.text}</span>
                         {visitedHeadings.has(heading.id) && (
-                          <CheckCircle className="ml-2 h-3 w-3 text-[#11922f]" />
+                          <CheckCircle className="ml-2 h-3 w-3 text-[#04877F]" />
                         )}
                       </button>
                     </motion.li>
@@ -174,8 +176,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <CheckCircle className="mx-auto mb-2 h-6 w-6 text-[#11922f]" />
-                  <p className="text-sm font-medium text-[#11922f]">
+                  <CheckCircle className="mx-auto mb-2 h-6 w-6 text-[#04877F]" />
+                  <p className="text-sm font-medium text-[#04877F]">
                     You&apos;ve completed this article!
                   </p>
                 </motion.div>
@@ -184,7 +186,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
           )}
         </AnimatePresence>
       </div>
-      <SubscribeNewsletter />
+      <NewsletterForm />
     </nav>
   );
 }

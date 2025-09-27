@@ -124,7 +124,7 @@ export default function Hero() {
             <HighlightText
               transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
               inView
-              className="from-blue-50  text-green-400 to-blue-100 dark:from-blue-500 dark:to-blue-500"
+              className="from-blue-50  text-[#04877F] to-blue-100 dark:from-blue-500 dark:to-blue-500"
               text="Full Stack"
             />{" "}
             Development.
@@ -152,7 +152,7 @@ export default function Hero() {
              <button className="relative border text-gray-200 dark:text-black px-6 py-2 rounded-md overflow-hidden group">
                     <span className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 transform -translate-x-full group-hover:translate-x-0 transition duration-300"
           ></span>
-          <span className="relative z-10 font-bold group-hover:text-green-400">Latest Projects</span>
+          <span className="relative z-10 font-bold group-hover:text-[#04877F]">Latest Projects</span>
                 </button>
           </Link>
         </AnimatedGroup>
