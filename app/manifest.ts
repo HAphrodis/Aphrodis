@@ -1,7 +1,7 @@
 export default function manifest() {
   return {
     name: "Aphrodis Hakuzweyezu",
-    short_name: "Ishimwe",
+    short_name: "Aphrodis",
     icons: [
       {
         src: "/web-app-manifest-192x192.png",
