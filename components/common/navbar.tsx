@@ -176,7 +176,7 @@ export function FloatingNavbar() {
           <motion.div
             className={cn(
               "absolute left-1/2 -translate-x-1/2 transition-all duration-300",
-              scrolled && "bg-white shadow-lg w-screen",
+              scrolled && "bg-white shadow-lg w-screen px-10",
             )}
             // whileHover={{ scale: scrolled ? 0.98 : 1.02 }}
             // transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -197,7 +197,7 @@ export function FloatingNavbar() {
             <div className="flex justify-between gap-4 items-center">
             
             <div className="flex-shrink-0 gap-2">
-           <div className="flex items-center gap-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-sm"> 
+           <div className="flex items-center gap-4 px-6 py-2"> 
                    <Link 
                       href="https://github.com/HAphrodis"
                       target="_blank"

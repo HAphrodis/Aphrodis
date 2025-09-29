@@ -13,7 +13,7 @@ export default function Banner({
     currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
 
   return (
-    <div className="relative h-[300px] w-full overflow-hidden md:h-[450px]">
+    <div className="relative h-[300px] w-full overflow-hidden md:h-[400px]">
       <Image
         src={backgroundImage}
         alt={`${formattedPage} banner`}
@@ -23,7 +23,7 @@ export default function Banner({
       />
       <div className="absolute inset-0 bg-[#001D23]/80"></div>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-        <h1 className="text-xl font-bold leading-tight md:text-4xl">
+        <h1 className="text-2xl font-bold leading-tight md:text-4xl">
           {formattedPage}
         </h1>
       </div>
