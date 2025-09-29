@@ -28,7 +28,7 @@ import {
   TriggerWrapper,
 } from "@/components/common/dropdown";
 import { MoreDropdown } from "@/components/common/dropdown/more-dropdown";
-import { ServicesDropdown } from "@/components/common/dropdown/services-dropdown";
+// import { ServicesDropdown } from "@/components/common/dropdown/services-dropdown";
 
 const navItemsData = [
   {
@@ -200,10 +200,10 @@ export const navigationPages = [
     category: "Navigation",
   },
   {
-    title: "Projects",
+    title: "Blogs",
     description: "Showcase of my projects",
     icon: Briefcase,
-    href: "/work",
+    href: "/blogs",
     category: "Navigation",
   },
   {

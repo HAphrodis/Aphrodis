@@ -188,7 +188,7 @@ export default function BlogContent({
                 url={typeof window !== 'undefined' ? window.location.href : ''}
               />
 
-              <div className="mb-5 overflow-x-hidden rounded-xl border items-center border-[#cafff7]/30 bg-white shadow-sm md:p-8">
+              <div className="mb-5 overflow-x-hidden rounded-xl border items-center border-[#cafff7]/30 bg-white p-4 shadow-sm md:p-8">
                 <div
                   className="prose prose-headings:!text-gray-800 
                     prose-headings:!font-bold prose-p:!text-gray-700 prose-a:text-[#00753c] 

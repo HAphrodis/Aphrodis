@@ -145,7 +145,7 @@ export function MobileMoreSheet({
             {/* Header */}
             <motion.div
               variants={itemVariants}
-              className="sticky top-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 backdrop-blur-xl border-b border-purple-100/60 p-3 z-10"
+              className="sticky top-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 backdrop-blur-xl border-b border-purple-100/60 p-3 z-10"
             >
               <div className="flex items-center justify-between mb-2">
                 <div>
@@ -155,7 +155,7 @@ export function MobileMoreSheet({
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-full hover:bg-purple-300/20 transition-colors text-purple-100 hover:text-emerald-300"
+                  className="p-2 rounded-full hover:bg-purple-300/20 transition-colors text-white hover:text-white/80"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -163,12 +163,12 @@ export function MobileMoreSheet({
 
               {/* Search */}
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3 w-3 text-purple-100/60" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3 w-3 text-white" />
                 <Input
                   placeholder="Search... "
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 bg-purple-100/10 border-purple-100/30 text-emerald-100 placeholder:text-purple-100/50 placeholder:text-sm focus-visible:ring-purple-100/60 focus-visible:border-purple-100/70"
+                  className="pl-10 bg-purple-100/10 border-purple-100/30 text-white placeholder:text-purple-100/50 placeholder:text-sm focus-visible:ring-purple-100/60 focus-visible:border-purple-100/70"
                 />
               </div>
             </motion.div>
