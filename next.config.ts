@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'us-west-2.graphassets.com',
+        hostname: 'demo.gethugothemes.com',
         port: '',
         pathname: '/**',
       },

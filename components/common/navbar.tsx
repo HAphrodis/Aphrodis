@@ -26,6 +26,8 @@ import {
   Menu,
   Contact,
   Home,
+  Briefcase,
+  Award,
 } from "lucide-react";
 
 import { MobileMoreSheet } from "@/components/common/mobile-more-sheet";
@@ -41,6 +43,16 @@ const navItems = [
     label: "About",
     icon: User2,
     href: "/about",
+  },
+  {
+    label: "Experience",
+    icon: Award,
+    href: "/experience",
+  },
+  {
+    label: "Work",
+    icon: Briefcase,
+    href: "/work",
   },
   {
     label: "Blogs",
@@ -92,6 +104,41 @@ const mobileNavItems = [
   //   icon: FaEnvelope,
   //   href: "mailto:hakuzweaphossy@gmail",
   // },
+  {
+    label: "Home",
+    icon: Home,
+    href: "/",
+  },
+  {
+    label: "About",
+    icon: User2,
+    href: "/about",
+  },
+  {
+    label: "Experience",
+    icon: Award,
+    href: "/experience",
+  },
+  {
+    label: "Work",
+    icon: Briefcase,
+    href: "/work",
+  },
+  {
+    label: "Blogs",
+    icon: Grid,
+    href: "/blogs",
+  },
+  {
+    label: "Services",
+    icon: ImageIcon,
+    href: "/services",
+  },
+  {
+    label: "Contacts",
+    icon: Contact,
+    href: "/contact",
+  },
   {
     label: "More",
     icon: Menu,

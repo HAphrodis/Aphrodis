@@ -1,3 +1,5 @@
+// icons\index.tsx
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   AlertTriangle,
   ArrowRight,
@@ -40,9 +42,88 @@ import {
   UsersIcon,
   ScrollText,
   ListCheck,
+  Database,
+  Mail,
+  Bot,
+  Cpu,
+  Globe,
+  Code,
+  Palette,
+  Shield,
+  Zap,
+  Cloud,
+  Code2,
+  BugOffIcon,
+  ShieldCheck,
+  PenTool,
+  Monitor,
+  Pencil,
+  NotebookPen,
+  Terminal,
 } from "lucide-react";
 
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiMongodb,
+  SiVercel,
+  SiNodedotjs,
+  SiExpress,
+  SiCloudinary,
+  // SiFramer,
+  SiRedis,
+  SiSupabase,
+  SiGraphql,
+  SiSocketdotio,
+  SiLeaflet,
+  SiGoogleanalytics,
+  SiGithub,
+  SiFigma,
+  SiRadixui,
+  SiZod,
+  SiAxios,
+  SiSwiper,
+  SiChartdotjs,
+  SiPrisma,
+  SiSentry,
+  SiResend,
+  SiBun,
+  SiMdx,
+  SiShadcnui,
+  SiRender,
+  SiVite,
+  SiTurborepo,
+  SiPostgresql,
+  SiStripe,
+  SiUpstash,
+  SiDocker,
+  SiTwilio,
+  SiBetterstack,
+  SiJavascript,
+  SiCss3,
+  SiHtml5,
+  SiGit,
+  SiMocha,
+  SiSass,
+  SiBootstrap,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiTrello,
+  SiPivotaltracker,
+  SiLightning,
+  SiApollographql,
+  SiAppsignal,
+  SiVitest,
+} from "react-icons/si";
+
+import { DrizzleOrmIcon, GeminiIcon, GSAPIcon } from "@/icons/svg";
+import { FaAws, FaGithub, FaUpDown } from "react-icons/fa6";
+import { FaServer } from "react-icons/fa";
+
 import { BiSolidDonateHeart } from "react-icons/bi";
+import Motion from "./motion-icon";
 
 export type Icon = LucideIcon;
 
@@ -85,12 +166,10 @@ export const Icons = {
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 496 512"
-      {...props}
-    >
+      {...props}>
       <path
         fill="currentColor"
-        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-      ></path>
+        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
     </svg>
   ),
   twitter: Twitter,
@@ -105,4 +184,196 @@ export const Icons = {
   scrolltext: ScrollText,
   listcheck: ListCheck,
   donateicon: BiSolidDonateHeart,
+};
+
+// Map technology names to their corresponding icons
+export const getTechIcon = (techName: string) => {
+  const iconMap: Record<string, any> = {
+    "Next.js": SiNextdotjs,
+    "Next.js 14": SiNextdotjs,
+    "Next.js 15": SiNextdotjs,
+    React: SiReact,
+    "React 18": SiReact,
+    TypeScript: SiTypescript,
+    "TypeScript 5": SiTypescript,
+    TailwindCSS: SiTailwindcss,
+    "Tailwind CSS": SiTailwindcss,
+    "TailwindCSS 3": SiTailwindcss,
+    MongoDB: SiMongodb,
+    PostgreSQL: SiPostgresql,
+    Vercel: SiVercel,
+    "Node.js": SiNodedotjs,
+    HTML: SiHtml5,
+    CSS: SiCss3,
+    JavaScript: SiJavascript,
+    Express: SiExpress,
+    Cloudinary: SiCloudinary,
+    Motion: Motion,
+    "Framer Motion": Motion,
+    GSAP: GSAPIcon,
+    "GSAP.js": GSAPIcon,
+    Redis: SiRedis,
+    Supabase: SiSupabase,
+    GraphQL: SiGraphql,
+    "Socket.io": SiSocketdotio,
+    "Leaflet.js": SiLeaflet,
+    "Google Analytics": SiGoogleanalytics,
+    "Vercel Analytics": SiVercel,
+    GitHub: SiGithub,
+    Figma: SiFigma,
+    "Radix UI": SiRadixui,
+    Zod: SiZod,
+    Axios: SiAxios,
+    Swiper: SiSwiper,
+    "Swiper.js": SiSwiper,
+    "Chart.js": SiChartdotjs,
+    ApexCharts: SiChartdotjs,
+    Prisma: SiPrisma,
+    Sentry: SiSentry,
+    Resend: SiResend,
+
+    Bun: SiBun,
+
+    MDX: SiMdx,
+    "Shadcn/UI": SiShadcnui,
+    "Chadcn UI": SiShadcnui,
+    Convertkit: Mail,
+    Render: SiRender,
+
+    "Auth.js": Shield,
+    "React Hook Form": Code,
+    "Lucide React": Palette,
+    "Google Gemini": GeminiIcon,
+    Typebot: Bot,
+    Winston: Database,
+    Upstash: SiUpstash,
+    Turbopack: Zap,
+    "Vercel CLI": Cloud,
+    "Vercel Toolbar": Cloud,
+    "AI SDK": Bot,
+    v0: Bot,
+    "AI Gateway": Bot,
+    Workflows: Cpu,
+    "Fluid Compute": Cpu,
+    Nuxt: Globe,
+    Svelte: Globe,
+    SvelteKit: Globe,
+    Remix: Globe,
+    Vite: SiVite,
+    Playwright: Code,
+    Drizzle: DrizzleOrmIcon,
+    "Drizzle ORM": DrizzleOrmIcon,
+    "Drizzle Orm": DrizzleOrmIcon,
+    DrizzleORM: DrizzleOrmIcon,
+    Turborepo: SiTurborepo,
+
+    Effect: Code,
+    Stripe: SiStripe,
+    "Upstash for Redis": SiUpstash,
+    "Redis (Upstash)": SiUpstash,
+    Docker: SiDocker,
+    AWS: FaAws,
+    NeonDB: FaServer,
+    // Inngest: Inngest
+    Twilio: SiTwilio,
+
+    Blob: Cloud,
+    Groq: Bot,
+    Grok: Bot,
+    fal: Bot,
+    "Deep Infra": Bot,
+    //     MDX: BsFiletypeMdx,
+    //     Redis: SiRedis,
+    //     Sentry: SiSentry,
+    //     "Radix UI": SiRadixui,
+    //     "Socket.io": SiSocketdotio,
+    //     Resend: SiResend,
+    "Better Stack": SiBetterstack,
+    Leaflet: SiLeaflet,
+    "Github Pages": FaGithub,
+
+    "Sass/SCSS": SiSass,
+    Bootstrap: SiBootstrap,
+    "Adobe Photoshop": SiAdobephotoshop,
+    "Adobe Illustrator": SiAdobeillustrator,
+    Trello: SiTrello,
+    "Pivotal Tracker": SiPivotaltracker,
+    "Git & GitHub": SiGit,
+    Git: SiGit,
+    "Mocha/Chai": SiMocha,
+    "UI/UX Design": PenTool,
+
+    "RESTful APIs": SiAxios,
+  };
+
+  return iconMap[techName] || Code;
+};
+
+// About Page Skills Section
+
+export const categoryIcons: Record<string, any> = {
+  SiReact: SiReact,
+  SiNodedotjs: SiNodedotjs,
+  SiMongodb: SiMongodb,
+  SiGit: SiGit,
+  SiFigma: SiFigma,
+  SiMocha: SiMocha,
+};
+
+export const skillIcons: Record<string, any> = {
+  "HTML5/CSS3": Code2,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  "Sass/SCSS": SiSass,
+  Bootstrap: SiBootstrap,
+  "Framer Motion": Motion,
+  Motion: Motion,
+  ShadcnUI: SiShadcnui,
+  "React.js": SiReact,
+  "Next.js": SiNextdotjs,
+  TailwindCSS: SiTailwindcss,
+  "Node.js": SiNodedotjs,
+  "Express.js": SiExpress,
+  GraphQL: SiGraphql,
+  MongoDB: SiMongodb,
+  PostgreSQL: SiPostgresql,
+  Redis: SiRedis,
+  "Git & GitHub": SiGit,
+  Vercel: SiVercel,
+  Figma: SiFigma,
+  "Adobe Photoshop": SiAdobephotoshop,
+  "Adobe Illustrator": SiAdobeillustrator,
+  "Mocha/Chai": SiMocha,
+  Prisma: SiPrisma,
+  "Drizzle ORM": DrizzleOrmIcon,
+  "Google Analytics": SiGoogleanalytics,
+  Cloudinary: SiCloudinary,
+  Sentry: SiSentry,
+  Render: SiRender,
+  Trello: SiTrello,
+  "Pivotal Tracker": SiPivotaltracker,
+  "UI/UX Design": PenTool,
+  "Responsive Design": Monitor,
+  Prototyping: Pencil,
+  Wireframing: NotebookPen,
+  "Database Design": FaServer,
+  "Query Optimization": SiLightning,
+  "API Security": SiLightning,
+  "Authentication & Authorization": ShieldCheck,
+  "Socket.io": SiSocketdotio,
+  "RESTful APIs": FaUpDown,
+  "Apollo Server": SiApollographql,
+
+  "Unit Testing": SiMocha,
+  "Integration Testing": SiMocha,
+
+  "API Testing": SiAppsignal,
+  "Code Review": Terminal,
+  Debugging: BugOffIcon,
+  "Performance Optimization": SiLightning,
+  Supabase: SiSupabase,
+  NeonDB: FaServer,
+
+  Vitest: SiVitest,
+  // Playwright: Playwright
 };

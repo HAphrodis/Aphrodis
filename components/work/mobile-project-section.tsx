@@ -6,18 +6,18 @@ import Image from "next/image"
 import Link from "next/link"
 import { projects } from "@/constants/projects"
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUpRight, Calendar, ExternalLink, Info } from "lucide-react"
+import { ArrowUpRight, Calendar, Clock, ExternalLink, Info } from "lucide-react"
 import { FaGithub } from "react-icons/fa6"
 
 import type { Project } from "@/types/project"
+import { formatDate, isProjectWIP } from "@/lib/format-date"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
 import { BorderBeam } from "../magicui/border-beam"
 import { ProjectDetailsDialog } from "./project-details-dialog"
-import { formatDate, isProjectWIP } from "@/lib/format-date"
 
-export default function ProjectSection() {
+export default function MobileProjectSection() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -121,7 +121,7 @@ export default function ProjectSection() {
 
   const ProjectDetails = ({ project }: { project: Project }) => (
     <motion.div
-      className="mt-6 space-y-6 rounded-xl border border-gray-200 bg-purple/95 p-4 shadow-lg backdrop-blur-sm md:mt-0 md:p-6"
+      className="mt-6 space-y-6 rounded-xl border border-gray-200 bg-white/95 p-4 shadow-lg backdrop-blur-sm md:mt-0 md:p-6"
       {...(!isMobile && {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
@@ -167,12 +167,6 @@ export default function ProjectSection() {
               Private
             </span>
           )} */}
-
-          {project.category && (
-            <div className="rounded-full  border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary capitalize flex items-center gap-1 ">
-              {project.category.replace("-", " ")}
-            </div>
-          )}
         </motion.div>
       </div>
 
@@ -203,7 +197,7 @@ export default function ProjectSection() {
               transition: { delay: 0.4 + index * 0.05 },
             })}>
             <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary md:h-2 md:w-2" />
-            <p className="text-base leading-relaxed text-gray-700">{feature}</p>
+            <p className="text-sm leading-relaxed text-gray-700">{feature}</p>
           </motion.div>
         ))}
       </motion.div>
@@ -229,6 +223,23 @@ export default function ProjectSection() {
             <ExternalLink className="h-3 w-3 md:h-4 md:w-4" />
           </a>
         </Button>
+
+        {!project.isPrivate && (
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="rounded-full border-secondary bg-white text-secondary shadow-sm transition-all duration-200 hover:bg-secondary hover:text-white">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2">
+              <FaGithub className="h-3 w-3 md:h-4 md:w-4" />
+              Source Code
+            </a>
+          </Button>
+        )}
 
         <Button
           onClick={() => handleOpenProjectDetails(project)}
@@ -284,7 +295,7 @@ export default function ProjectSection() {
                   <BorderBeam
                     duration={30}
                     size={500}
-                    className="from-transparent via-primary to-transparent"
+                    className="from-transparent via-primary/90 to-transparent"
                   />
 
                   <div className="relative aspect-video overflow-hidden rounded-lg border border-gray-200 transition-all duration-500 group-hover:border-primary/40">
