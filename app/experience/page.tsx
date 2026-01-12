@@ -145,7 +145,7 @@ export default function TimelinePage() {
                 pink: { border: "border-pink-500", text: "text-pink-600", bg: "bg-pink-100", ring: "ring-pink-400" },
               };
 
-              function ExperienceCard({ exp, idx }: { exp: any; idx: number }) {
+              function ExperienceCard({ exp, idx }: { exp: Experience; idx: number }) {
                 const cols = colorMap[exp.color] || colorMap.blue;
                 return (
                   <div className={`timeline-card relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border-l-4 ${cols.border} transform transition-all duration-700 ${active === idx ? "scale-[1.02] ring-4 " + cols.ring : ""}`}>
