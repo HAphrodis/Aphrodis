@@ -136,7 +136,7 @@ export default function ProjectSection() {
             animate: { opacity: 1, y: 0 },
             transition: { delay: 0.1 },
           })}>
-          <div className="h-1 w-4 rounded-full bg-primary" />
+          <div className="h-1 w-4 rounded-full bg-[#10b981]" />
           <h2 className="flex items-center gap-2 text-xl font-bold text-gray-900 md:text-2xl">
             {project.title}
           </h2>
@@ -262,14 +262,14 @@ export default function ProjectSection() {
           viewport={{ once: true }}
           className="text-center mb-16">
           <h2 className="text-4xl md:text-4xl font-bold text-gray-900 mb-6">
-            Some of our
-            <span className="bg-primary bg-clip-text text-transparent">
+            Some of My
+            <span className="bg-[#10b981] bg-clip-text text-transparent">
               {" "}
-              projects
+              Projects
             </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore a selection of our featured projects that showcase our
+            Explore a selection of my featured projects that showcase my
             expertise in delivering innovative and impactful solutions across
             various industries{" "}
           </p>
@@ -357,7 +357,7 @@ export default function ProjectSection() {
                 asChild
                 className="rounded-full border-2 border-primary bg-primary px-6 py-2 text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-primary hover:shadow-xl">
                 <Link
-                  href="/projects"
+                  href="/work"
                   className="inline-flex items-center gap-2">
                   View All Projects
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

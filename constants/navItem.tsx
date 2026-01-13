@@ -19,6 +19,7 @@ import {
   Bookmark,
   LinkIcon,
   ListTodo,
+  Award,
 } from "lucide-react";
 import {
   Dropdown,
@@ -28,6 +29,8 @@ import {
   TriggerWrapper,
 } from "@/components/common/dropdown";
 import { MoreDropdown } from "@/components/common/dropdown/more-dropdown";
+import { de } from "@faker-js/faker";
+import { description } from "@/app/admin/dashboard/overview/_components/bar-graph";
 // import { ServicesDropdown } from "@/components/common/dropdown/services-dropdown";
 
 const navItemsData = [
@@ -119,7 +122,7 @@ export function useNavItems() {
 }
 
 interface NavItem {
-  label: string;
+  title: string;
   icon: React.ComponentType<{ className?: string }>;
   href: string;
   dropdown?: React.ReactNode;
@@ -127,22 +130,22 @@ interface NavItem {
 
 export const navItems: NavItem[] = [
   {
-    label: "Home",
+    title: "Home",
     icon: Home,
     href: "/",
   },
   {
-    label: "About",
+    title: "About",
     icon: User2,
     href: "/about",
   },
   {
-    label: "Work",
+    title: "Work",
     icon: Grid,
     href: "/work",
   },
   // {
-  //   label: "Services",
+  //   title: "Services",
   //   icon: ImageIcon,
   //   href: "/services",
   //   // dropdown: (
@@ -159,12 +162,12 @@ export const navItems: NavItem[] = [
   //   // ),
   // },
   {
-    label: "Services",
+    title: "Services",
     icon: BookOpen,
     href: "/services",
   },
   {
-    label: "More",
+    title: "More",
     icon: ChevronDown,
     href: "#",
     dropdown: (
@@ -199,10 +202,24 @@ export const navigationPages = [
     href: "/about",
     category: "Navigation",
   },
+    {
+      title: "Experience",
+      description: "My career journey",
+      icon: Award,
+      href: "/experience",
+      category: "Navigation",
+    },
+    {
+      title: "Work",
+      description: "Showcase of my projects",
+      icon: Briefcase,
+      href: "/work",
+      category: "Navigation",
+    },
   {
     title: "Blogs",
     description: "Showcase of my projects",
-    icon: Briefcase,
+    icon: Newspaper,
     href: "/blogs",
     category: "Navigation",
   },

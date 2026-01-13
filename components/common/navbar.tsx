@@ -74,8 +74,73 @@ const navItems = [
 
 // Mobile nav items
 const mobileNavItems = [
+  //    {
+  //   label: "Github",
+  //   icon: FaGithub,
+  //   href: "https://github.com/HAphrodis",
+  // },
+  // {
+  //   label: "Linkedin",
+  //   icon: FaLinkedin,
+  //   href: "https://www.linkedin.com/in/aphrodis-hakuzweyezu-675677304",
+  // },
+  // {
+  //   label: "Instagrm",
+  //   icon: FaInstagram,
+  //   href: "https://www.instagram.com/hakuzweyezu_aphrodis",
+  // },
+  // {
+  //   label: "Twitter",
+  //   icon: FaXTwitter,
+  //   href: "https://x.com/Aphossy1?t=EO14AukrdFvPyCna4a-tmQ&s=09",
+  // },
+  // {
+  //   label: "Phone Number",
+  //   icon: PhoneCall,
+  //   href: "tel:0784343073",
+  // },
+  // {
+  //   label: "Email",
+  //   icon: FaEnvelope,
+  //   href: "mailto:hakuzweaphossy@gmail",
+  // },
+  // {
+  //   label: "Home",
+  //   icon: Home,
+  //   href: "/",
+  // },
+  // {
+  //   label: "About",
+  //   icon: User2,
+  //   href: "/about",
+  // },
+  // {
+  //   label: "Experience",
+  //   icon: Award,
+  //   href: "/experience",
+  // },
+  // {
+  //   label: "Work",
+  //   icon: Briefcase,
+  //   href: "/work",
+  // },
+  // {
+  //   label: "Blogs",
+  //   icon: Grid,
+  //   href: "/blogs",
+  // },
+  // {
+  //   label: "Services",
+  //   icon: ImageIcon,
+  //   href: "/services",
+  // },
+  // {
+  //   label: "Contacts",
+  //   icon: Contact,
+  //   href: "/contact",
+  // },
   {
-    label: "Menu",
+    label: "More",
     icon: Menu,
     href: "#",
     action: "more",
