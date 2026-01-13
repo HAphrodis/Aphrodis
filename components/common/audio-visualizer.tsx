@@ -75,7 +75,11 @@ export default function AudioVisualizer({
       ctx.clearRect(0, 0, width, height);
 
       // Get frequency data
-      localAnalyserRef.current.getByteFrequencyData(dataArray);
+      // Force the generic parameter to `ArrayBuffer` to match the DOM lib's
+      // definition (avoids the ArrayBufferLike vs ArrayBuffer mismatch).
+      localAnalyserRef.current.getByteFrequencyData(
+        dataArray as unknown as Uint8Array<ArrayBuffer>,
+      );
 
       if (visualizerType === "bars") {
         drawBars(ctx, dataArray, width, height);
