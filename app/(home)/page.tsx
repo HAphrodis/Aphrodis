@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, Variants, Transition } from "framer-motion";
-import Footer from "@/components/common/footer";
 import ContactSection from "@/components/ContactSection";
-import { FloatingNavbar } from "@/components/common/navbar";
 import ProjectSection from "@/components/work/Project-section";
 import AboutSection from "@/components/about/AboutSection";
 import ScrollToTop from "@/components/common/scroll-to-top";
@@ -51,7 +49,7 @@ export default function Page() {
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
-    setTimeout(() => setShowContent(true), 300);
+    setTimeout(() => setShowContent(true), 300);  
   };
 
   // Prevent scrolling during loading
@@ -85,17 +83,16 @@ export default function Page() {
             className="min-h-screen"
           >
             <MouseLight />
-            <FloatingNavbar />
 
-            <motion.div variants={SECTION_VARIANTS}>
+            <motion.div variants={SECTION_VARIANTS} >
               <Hero />
             </motion.div>
 
-            <motion.div variants={SECTION_VARIANTS}>
+            <motion.div variants={SECTION_VARIANTS} >
               <AboutSection />
             </motion.div>
 
-            <motion.div variants={SECTION_VARIANTS}>
+            <motion.div variants={SECTION_VARIANTS} > 
               <ProjectSection />
             </motion.div>
 
@@ -103,12 +100,10 @@ export default function Page() {
               <BlogSection />
             </motion.div> */}
 
-            <motion.div variants={SECTION_VARIANTS}>
-              <ContactSection />
-            </motion.div>
-
-            <ScrollToTop />
-            <Footer />
+            <motion.div variants={SECTION_VARIANTS}> 
+              <ContactSection /> 
+            </motion.div> 
+            <ScrollToTop /> 
           </motion.main>
         )}
       </AnimatePresence>
